@@ -20,7 +20,7 @@ var db = require('knex')({
 });
 
 // Controllers - aka, the db queries
-const main = require('../st-users/src/components/DataVisualization/Controllers/main');
+const main = require('../st-user/src/components/DataVisualization/Controllers/main');
 
 // App
 const app = express();

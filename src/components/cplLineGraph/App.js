@@ -162,7 +162,7 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('${process.env.REACT_APP_API_URL}/crudd');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/crudd`);
         const data = await response.json();
 
         // Format the dates

@@ -125,7 +125,8 @@ const App = () => {
   // Function to fetch items from the server
   const getItems = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
+      //const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
+      const response = await fetch('http://localhost:5000/crud');
       const data = await response.json();
       setItems(data);
     } catch (error) {
@@ -137,8 +138,7 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
-        //const response = await fetch('http://localhost:5000/crud');
+        const response = await fetch('http://localhost:5000/crud');
         const data = await response.json();
 
         // Format the dates

@@ -1,5 +1,14 @@
+
 trigger:
-- main  # or your branch name
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    exclude:
+      - '*'
+
 
 pool:
   vmImage: ubuntu-latest

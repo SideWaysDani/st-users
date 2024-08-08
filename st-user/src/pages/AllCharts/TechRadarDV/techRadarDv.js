@@ -194,7 +194,7 @@ function App() {
 
     return (
         <div>
-            <div style={{ marginTop: '100px', marginLeft: '50px'}}>
+            <div style={{ marginTop: '100px', marginLeft: '0px'}}>
             <div className="App">
                 <div className="dropdown-container">
                     <select onChange={(e) => setSelectedDate(e.target.value)} value={selectedDate} disabled={isPlaying}>
@@ -215,7 +215,7 @@ function App() {
             </div>
         </div>
 
-        <div style={{ marginTop: '100px', marginLeft: '50px'}}>
+        <div style={{ marginTop: '10px', marginLeft: '0px'}}>
             <div className="App">
                 <div className="dropdown-container">
                     <select onChange={(e) => setSelectedDate2(e.target.value)} value={selectedDate2} disabled={isPlaying2}>

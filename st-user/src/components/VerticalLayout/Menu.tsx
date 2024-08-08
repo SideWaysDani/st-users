@@ -965,6 +965,12 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/data-vizualization-2",
                 parentId: 144
             },
+            {
+                id: 147,
+                label: "C P&L Line Graph",
+                link: "/data-vizualization-3",
+                parentId: 144
+            },
         ]
     },
 ];

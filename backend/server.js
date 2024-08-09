@@ -20,7 +20,8 @@ var db = require('knex')({
 });
 
 // Controllers - aka, the db queries
-const main = require('../st-user/src/components/DataVisualization/Controllers/main');
+const main = require('../st-user/src/components/DataVisualization/Controllers/main2');
+const main2 = require('../st-user/src/components/cplLineGraph/Controllers/main')
 
 // App
 const app = express();
@@ -35,8 +36,10 @@ app.use(bodyParser.json());
 app.use(morgan('combined')); // use 'tiny' or 'combined'
 
 // App Routes - Auth
-app.get('/crud', (req, res) => main.getTableData(req, res, db));
-app.get('/crudd', (req, res) => main.getTableData2(req, res, db));
+app.get('/lineGraph1', (req, res) => main.getTableData(req, res, db));
+app.get('/lineGraph2', (req, res) => main.getTableData2(req, res, db));
+app.get('/crud', (req, res) => main2.getTableData(req, res, db));
+app.get('/crudd', (req, res) => main2.getTableData2(req, res, db));
 app.post('/crud', (req, res) => main.postTableData(req, res, db));
 app.put('/crud', (req, res) => main.putTableData(req, res, db));
 app.delete('/crud', (req, res) => main.deleteTableData(req, res, db));

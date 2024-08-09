@@ -6,18 +6,20 @@ const LineChart = ({ data }) => {
     return <p>Loading data...</p>;
   }
 
+  console.log('Data received in LineChart:', data);
   const chartData = {
-    labels: data.map((item) => item.battle_date), // X-axis labels (Lead Date)
+    labels: data.map((item) => item.valid_to_end_date), // X-axis labels (Lead Date)
     datasets: [
       {
         label: 'Profit and Loss Percentage',
-        data: data.map((item) => item.percentageprofitandloss), // Y-axis data (Profit and Loss Percentage)
+        data: data.map((item) => item.percentage_profit_and_loss), // Y-axis data (Profit and Loss Percentage)
         backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust blue for percentage
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
     ],
   };
+  
 
   const options = {
     scales: {

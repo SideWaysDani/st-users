@@ -45,7 +45,7 @@ function Item(props) {
                 fontSize={itemFontSize}
                 fontFamily={fontFamily}
             >
-                {isHovered ? props.data.name : shortName} ({props.profitAndLoss})
+                {isHovered ? props.data.name : shortName} ({props.percentageprofitandloss})
             </text>
         </ItemWrapper>
     );
@@ -54,7 +54,7 @@ function Item(props) {
 Item.propTypes = {
     rotateDegrees: PropTypes.number.isRequired,
     data: PropTypes.object.isRequired,
-    profitAndLoss: PropTypes.string,
+    percentageprofitandloss: PropTypes.string,
     animate: PropTypes.bool
 };
 

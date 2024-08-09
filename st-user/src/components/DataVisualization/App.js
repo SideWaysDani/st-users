@@ -137,14 +137,14 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
-        //const response = await fetch('http://localhost:5000/crud');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph1`);
+        //const response = await fetch('http://localhost:5000/lineGraph1');
         const data = await response.json();
 
         // Format the dates
         const formattedData = data.map(item => ({
           ...item,
-          battle_date: new Date(item.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+          valid_to_end_date: new Date(item.valid_to_end_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
         }));
 
         setItems(formattedData);
@@ -162,13 +162,14 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/crudd`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph2`);
+        //const response = await fetch('http://localhost:5000/lineGraph2');
         const data = await response.json();
 
         // Format the dates
         const formattedData = data.map(item2 => ({
           ...item2,
-          battle_date: new Date(item2.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+          valid_to_end_date: new Date(item2.valid_to_end_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
         }));
 
         setItems2(formattedData);

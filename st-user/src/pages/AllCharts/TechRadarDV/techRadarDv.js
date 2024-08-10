@@ -196,6 +196,7 @@ function App() {
         <div>
             <div style={{ marginTop: '100px', marginLeft: '0px'}}>
             <div className="App">
+                <h2>war_clone_test</h2>
                 <div className="dropdown-container">
                     <select onChange={(e) => setSelectedDate(e.target.value)} value={selectedDate} disabled={isPlaying}>
                         <option value="">Select Battle Date</option>
@@ -217,6 +218,7 @@ function App() {
 
         <div style={{ marginTop: '10px', marginLeft: '0px'}}>
             <div className="App">
+            <h2>war_clone</h2>
                 <div className="dropdown-container">
                     <select onChange={(e) => setSelectedDate2(e.target.value)} value={selectedDate2} disabled={isPlaying2}>
                         <option value="">Select Battle Date</option>

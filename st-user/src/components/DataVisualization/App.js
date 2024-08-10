@@ -203,7 +203,7 @@ const App = () => {
     <Container className="App">
       <Row>
         <Col>
-          <h1 style={{ margin: '20px 0' }}>Data Visualization - Line Graph</h1>
+          <h1 style={{ margin: '20px 0' }}>Line Graph - war_clone_test</h1>
         </Col>
       </Row>
       {/* <Row>
@@ -247,7 +247,7 @@ const App = () => {
       <Row>
         <Col>
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
-          <h2>Iteration - 2</h2>
+          <h2>Iteration - 2 - war_clone</h2>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>
       </Row>

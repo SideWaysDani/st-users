@@ -8,7 +8,7 @@ const getTableData = (req, res, db) => {
           END AS percentage_profit_and_loss
       `)
   )
-    .from('war_iter_2_2.allocation_history')
+    .from('war_clone_test.allocation_history')
     .groupBy('valid_to_end_date')
     .orderBy('valid_to_end_date')
     .then(profitLossItems => {

@@ -1,16 +1,16 @@
 const getTableData = (req, res, db) => {
   db.select(
-    'valid_to_end_date',
+    'battle_date',
     db.raw(`
           CASE
               WHEN SUM(allocated_strength) = 0 THEN 0
-              ELSE (SUM(CASE WHEN status = 'removing' THEN p_and_l ELSE 0 END) / SUM(allocated_strength)) * 100
+              ELSE (SUM(CASE WHEN status = 'set_limit removing' or status = 'stop_loss removing' THEN p_and_l ELSE 0 END) / SUM(allocated_strength)) * 100
           END AS percentage_profit_and_loss
       `)
   )
     .from('war_clone_test.allocation_history')
-    .groupBy('valid_to_end_date')
-    .orderBy('valid_to_end_date')
+    .groupBy('battle_date')
+    .orderBy('battle_date')
     .then(profitLossItems => {
       if (profitLossItems.length) {
         res.json(profitLossItems);

@@ -138,8 +138,8 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        //const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph1`);
-        const response = await fetch('http://localhost:5000/lineGraph1');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph1`);
+        //const response = await fetch('http://localhost:5000/lineGraph1');
         const data = await response.json();
 
         
@@ -178,8 +178,8 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        //const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph2`);
-        const response = await fetch('http://localhost:5000/lineGraph2');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph2`);
+        //const response = await fetch('http://localhost:5000/lineGraph2');
         const data = await response.json();
 
         

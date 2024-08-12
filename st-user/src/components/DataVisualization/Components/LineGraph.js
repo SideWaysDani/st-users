@@ -8,7 +8,7 @@ const LineChart = ({ data }) => {
 
   console.log('Data received in LineChart:', data);
   const chartData = {
-    labels: data.map((item) => item.valid_to_end_date), // X-axis labels (Lead Date)
+    labels: data.map((item) => item.battle_date), // X-axis labels (Lead Date)
     datasets: [
       {
         label: 'Profit and Loss Percentage',

@@ -24,7 +24,7 @@ const getTableData = (req, res, db) => {
 
 const getTableData2 = (req, res, db) => {
   db.select(
-    'valid_to_end_date',
+    'battle_date',
     db.raw(`
           CASE
               WHEN SUM(allocated_strength) = 0 THEN 0
@@ -33,8 +33,8 @@ const getTableData2 = (req, res, db) => {
       `)
   )
     .from('war_clone.allocation_history')
-    .groupBy('valid_to_end_date')
-    .orderBy('valid_to_end_date')
+    .groupBy('battle_date')
+    .orderBy('battle_date')
     .then(profitLossItems => {
       if (profitLossItems.length) {
         res.json(profitLossItems);

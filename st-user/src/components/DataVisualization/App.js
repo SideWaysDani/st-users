@@ -145,7 +145,7 @@ const App = () => {
         // Format the dates
         const formattedData = data.map(item => ({
           ...item,
-          valid_to_end_date: new Date(item.valid_to_end_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+          battle_date: new Date(item.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
         }));
 
         setItems(formattedData);

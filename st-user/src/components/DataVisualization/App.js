@@ -142,11 +142,26 @@ const App = () => {
         //const response = await fetch('http://localhost:5000/lineGraph1');
         const data = await response.json();
 
+        
         // Format the dates
-        const formattedData = data.map(item => ({
-          ...item,
-          battle_date: new Date(item.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
-        }));
+        // const formattedData = data.map(item => ({
+          
+        //   ...item,
+        //   console.log("Item before formatting:", item); // Check the original item
+        //   battle_date: new Date(item.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+        // }));
+        // console.log("items: ", items);
+
+        const formattedData = data.map(item => {
+          console.log("Item before formatting:", item); // Check the original item
+          const formattedDate = new Date(item.battle_date).toLocaleDateString('en-GB');
+          console.log("Formatted Date:", formattedDate);
+          return {
+              ...item,
+              battle_date: formattedDate
+          };
+      });
+      
 
         setItems(formattedData);
       } catch (error) {
@@ -167,10 +182,12 @@ const App = () => {
         //const response = await fetch('http://localhost:5000/lineGraph2');
         const data = await response.json();
 
+        
         // Format the dates
         const formattedData = data.map(item2 => ({
           ...item2,
-          valid_to_end_date: new Date(item2.valid_to_end_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+          
+          battle_date: new Date(item2.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
         }));
 
         setItems2(formattedData);

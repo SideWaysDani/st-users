@@ -142,6 +142,7 @@ import LeadsAnalysis from "src/pages/AllCharts/leadAnalysis/leadAnalysis";
 import DataVisualization from "src/pages/AllCharts/datavisualization/datavisualization";
 import TechRadarDv from "src/pages/AllCharts/TechRadarDV/techRadarDv";
 import CplLineGraph from "src/pages/AllCharts/cplLineGraph/cplLineGraph";
+import StrengthLineGRaph from "src/pages/AllCharts/StrengthLineGraph/StrengthLineGraph";
 
 //Icons
 import IconUnicon from "../pages/Icons/IconUnicon";
@@ -271,6 +272,7 @@ const userRoutes: Array<RouteProps> = [
   { path: "/data-vizualization", component: <DataVisualization /> },
   { path: "/data-vizualization-2", component: <TechRadarDv />},
   { path: "/data-vizualization-3", component: <CplLineGraph />},
+  { path: "/data-vizualization-4", component: <StrengthLineGRaph />},
 
  
  

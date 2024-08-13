@@ -971,6 +971,12 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/data-vizualization-3",
                 parentId: 144
             },
+            {
+                id: 148,
+                label: "Strength Line Graph",
+                link: "/data-vizualization-4",
+                parentId: 144
+            },
         ]
     },
 ];

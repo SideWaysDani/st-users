@@ -88,7 +88,7 @@ function Quadrant(props) {
                         rotateDegrees={-props.rotateDegrees}
                         key={index}
                         data={value}
-                        percentageprofitandloss={value.percentageprofitandloss}
+                        percentageprofitandloss={value.stock_name}
                         animate={props.animate}
                     />
                 )

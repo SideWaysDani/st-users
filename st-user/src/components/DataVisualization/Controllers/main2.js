@@ -3,9 +3,10 @@ const getTableData = (req, res, db) => {
     'battle_date',
     db.raw(`
           CASE
-              WHEN SUM(allocated_strength) = 0 THEN 0
-              ELSE (SUM(CASE WHEN status = 'set_limit removing' or status = 'stop_loss removing' THEN p_and_l ELSE 0 END) / SUM(allocated_strength)) * 100
-          END AS percentage_profit_and_loss
+              WHEN SUM(CASE WHEN status = 'set_limit removing' OR status = 'stop_loss removing' THEN allocated_strength ELSE 0 END) = 0 THEN 0
+        ELSE (SUM(CASE WHEN status = 'set_limit removing' OR status = 'stop_loss removing' THEN p_and_l ELSE 0 END) /
+             SUM(CASE WHEN status = 'set_limit removing' OR status = 'stop_loss removing' THEN allocated_strength ELSE 0 END)) * 100
+    END AS percentage_profit_and_loss
       `)
   )
     .from('war_clone_test.allocation_history')

@@ -26,8 +26,8 @@ function App() {
             try {
                 console.log('API URL:', process.env.REACT_APP_API_URL);
 
-                //const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data`);
-                const response = await fetch('http://localhost:5000/api/data');
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data`);
+                //const response = await fetch('http://localhost:5000/api/data');
                 const data = await response.json();
 
                 console.log('Fetched data:', data);

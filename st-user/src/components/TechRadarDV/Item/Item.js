@@ -11,7 +11,7 @@ function Item(props) {
     const [coordinates, setCoordinates] = useState({ x: props.data.x, y: props.data.y });
 
     // Combine the unit name and stock name
-    const fullName = `${props.data.name} (${props.stockName})`;
+    const fullName = `${props.data.name} (${props.percentageprofitandloss})`;
     
     // Handle text truncation if necessary
     const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;

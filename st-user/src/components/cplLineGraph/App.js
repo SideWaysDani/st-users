@@ -125,8 +125,8 @@ const App = () => {
   // Function to fetch items from the server
   const getItems = async () => {
     try {
-      //const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
+      //const response = await fetch('http://localhost:5000/crud');
       const data = await response.json();
       setItems(data);
     } catch (error) {
@@ -139,6 +139,7 @@ const App = () => {
       setIsLoading(true);
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
+        //const response = await fetch('http://localhost:5000/crud');
         const data = await response.json();
 
         // Format the dates
@@ -162,6 +163,7 @@ const App = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
+        //const response = await fetch('http://localhost:5000/crudd');
         const response = await fetch(`${process.env.REACT_APP_API_URL}/crudd`);
         const data = await response.json();
 
@@ -244,8 +246,9 @@ const App = () => {
       </Row> */}
       <Row>
         <Col>
+        <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 2 - war_clone_test</h1>
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
-          <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 2 - war_clone</h1>
+          <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>
       </Row>

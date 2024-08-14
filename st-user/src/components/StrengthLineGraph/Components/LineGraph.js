@@ -12,7 +12,7 @@ const LineChart = ({ data }) => {
         datasets: [
             {
                 label: 'Allocated Strength',
-                data: data.map((item) => item.total_allocated_strength), // Y-axis data (Profit and Loss Percentage)
+                data: data.map((item) => item.total_strength), // Y-axis data (Profit and Loss Percentage)
                 backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust blue for percentage
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
@@ -49,7 +49,7 @@ const LineChart = ({ data }) => {
 
     return (
         <div>
-            <h2>Profit and Loss Over Time</h2>
+            <h2>Total Strength Over Time</h2>
             <Line data={chartData} options={options} />
         </div>
     );

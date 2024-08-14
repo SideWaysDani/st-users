@@ -11,7 +11,7 @@ const getTableData = (req, res, db) => {
   }
 
   const getTableData2 = (req, res, db) => {
-    db.select('*').from('war_clone.summary')
+    db.select('*').from('war_iter_3.summary')
       .then(items2 => {
         if(items2.length){
           res.json(items2)

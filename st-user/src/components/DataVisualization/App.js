@@ -220,7 +220,7 @@ const App = () => {
     <Container className="App">
       <Row>
         <Col>
-          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 3 - war_clone_test</h1>
+          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 2 - war_clone_test</h1>
         </Col>
       </Row>
       {/* <Row>
@@ -263,8 +263,9 @@ const App = () => {
       </Row> */}
       <Row>
         <Col>
+        <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 2 - war_clone_test</h1>
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
-          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 2 - war_clone_test</h1>
+          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>
       </Row>

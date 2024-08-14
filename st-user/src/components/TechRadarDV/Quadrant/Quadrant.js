@@ -44,10 +44,10 @@ function Quadrant(props) {
     const getSectorLabelPosition = (index) => {
         const margin = sectorLabelMargin;
         switch (index) {
-            case 0: return { dx: 0, dy: -margin }; 
-            case 1: return { dx: margin, dy: 0 }; 
-            case 2: return { dx: 0, dy: margin }; 
-            case 3: return { dx: -margin, dy: 0 }; 
+            case 0: return { dx: 0, dy: -margin };
+            case 1: return { dx: margin, dy: 0 };
+            case 2: return { dx: 0, dy: margin };
+            case 3: return { dx: -margin, dy: 0 };
             default: return { dx: 0, dy: 0 };
         }
     };
@@ -82,17 +82,34 @@ function Quadrant(props) {
                     </g>
                 )
             })}
-            {props.points.map((value, index) => {
+            {/* {props.points.map((value, index) => {
                 return (
                     <Item
                         rotateDegrees={-props.rotateDegrees}
                         key={index}
                         data={value}
-                        percentageprofitandloss={value.stock_name}
+                        percentageprofitandloss={value.percentageprofitandloss}
                         animate={props.animate}
                     />
                 )
-            })}
+            })} */}
+
+{props.points.map((value, index) => {
+    console.log("Stock Name:", value.stock_name);  // Log the stock name
+    return (
+        <Item
+            rotateDegrees={-props.rotateDegrees}
+            key={index}
+            data={value}
+            stockName={value.stock_name}  // Ensure this is correctly passed
+            percentageprofitandloss={value.percentageprofitandloss}
+            animate={props.animate}
+        />
+    )
+})}
+
+
+
             {props.index === 0 && (
                 <Text
                     name={props.name}
@@ -120,7 +137,8 @@ Quadrant.propTypes = {
     angle: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     radiusDiminish: PropTypes.number,
-    animate: PropTypes.bool 
+    animate: PropTypes.bool
 };
 
 export default Quadrant;
+

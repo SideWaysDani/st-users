@@ -10,9 +10,11 @@ function Item(props) {
     const [isHovered, setIsHovered] = useState(false);
     const [coordinates, setCoordinates] = useState({ x: props.data.x, y: props.data.y });
 
-    const shortName = props.data.name.length > MAX_LENGTH ?
-        props.data.name.substr(0, MAX_LENGTH) + "..." :
-        props.data.name;
+    // Combine the unit name and stock name
+    const fullName = `${props.data.name} (${props.stockName})`;
+    
+    // Handle text truncation if necessary
+    const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;
 
     const onMouseToggle = () => {
         setIsHovered(!isHovered);
@@ -45,7 +47,7 @@ function Item(props) {
                 fontSize={itemFontSize}
                 fontFamily={fontFamily}
             >
-                {isHovered ? props.data.name : shortName} ({props.percentageprofitandloss})
+                {isHovered ? fullName : shortName}
             </text>
         </ItemWrapper>
     );
@@ -55,6 +57,7 @@ Item.propTypes = {
     rotateDegrees: PropTypes.number.isRequired,
     data: PropTypes.object.isRequired,
     percentageprofitandloss: PropTypes.string,
+    stockName: PropTypes.string,  // Ensure this prop is passed in
     animate: PropTypes.bool
 };
 

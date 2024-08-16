@@ -40,6 +40,7 @@ function App() {
                         quadrant: item.sector, 
                         ring: determineRing(parseFloat(item.percentageprofitandloss)),
                         percentageprofitandloss: item.percentageprofitandloss,
+                        stock_name: item.stock_name,
                         profit_and_loss: item.profit_and_loss,
                         unit_assignment_id: item.unit_assignment_id,
                         battle_date: item.battle_date.split('T')[0]
@@ -125,6 +126,7 @@ function App() {
                         percentageprofitandloss: item.percentageprofitandloss,
                         profit_and_loss: item.profit_and_loss,
                         unit_assignment_id: item.unit_assignment_id,
+                        stock_name: item.stock_name,
                         battle_date: item.battle_date.split('T')[0]
                     }));
 

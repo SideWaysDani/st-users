@@ -101,7 +101,7 @@ function Quadrant(props) {
             rotateDegrees={-props.rotateDegrees}
             key={index}
             data={value}
-            //stockName={value.stock_name}  // Ensure this is correctly passed
+            stock_name={value.stock_name}  // Ensure this is correctly passed
             percentageprofitandloss={value.percentageprofitandloss}
             animate={props.animate}
         />

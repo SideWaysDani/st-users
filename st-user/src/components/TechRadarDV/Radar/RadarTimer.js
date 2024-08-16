@@ -272,7 +272,8 @@ function RadarTimer(props) {
                 x: coordinates.x,
                 y: coordinates.y,
                 percentageprofitandloss: entry.percentageprofitandloss,
-                profit_and_loss: entry.profit_and_loss
+                profit_and_loss: entry.profit_and_loss,
+                stock_name: entry.stock_name
             };
 
             results.push(blip);

@@ -13,8 +13,8 @@ const LineChart = ({ data }) => {
             {
                 label: 'Allocated Strength',
                 data: data.map((item) => item.total_strength), // Y-axis data (Profit and Loss Percentage)
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust blue for percentage
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(140, 198, 63, 0.2)', // Adjust green shades as needed
+                borderColor: 'rgba(110, 180, 40, 1)',
                 borderWidth: 1,
             },
         ],

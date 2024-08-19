@@ -10,7 +10,7 @@ const LineChart = ({ data }) => {
     labels: data.map((item) => item.battle_date), // X-axis labels (Lead Date)
     datasets: [
       {
-        label: 'Profit and Loss Percentage',
+        label: 'Cumulative Profit and Loss Percentage',
         data: data.map((item) => item.cumulative_percentageprofitandloss), // Y-axis data (Profit and Loss Percentage)
         backgroundColor: 'rgba(75, 192, 192, 0.2)', // Adjust blue for percentage
         borderColor: 'rgba(75, 192, 192, 1)',
@@ -47,7 +47,7 @@ const LineChart = ({ data }) => {
 
   return (
     <div>
-      <h2>Profit and Loss Over Time</h2>
+      <h2>Cumulative Profit and Loss Over Time</h2>
       <Line data={chartData} options={options} />
     </div>
   );

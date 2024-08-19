@@ -78,10 +78,14 @@ function Item(props) {
   const [coordinates, setCoordinates] = useState({ x: props.data.x, y: props.data.y });
 
   // Combine the unit assignment ID and stock name
-  const fullName = `${props.data.name} (${props.stock_name? `${props.stock_name}` : ''})`;
+  //const fullName = `${props.data.name} (${props.stock_name? `${props.stock_name}` : '',',', `${props.percentageprofitandloss}`})`;
 
+  const fullName = `${props.data.name} (${props.stock_name}, ${props.percentageprofitandloss})`;
+
+  
   // Handle text truncation if necessary
-  const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;
+  //const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;
+  const shortName = `${props.data.name}`;
 
   const onMouseToggle = () => {
     setIsHovered(!isHovered);

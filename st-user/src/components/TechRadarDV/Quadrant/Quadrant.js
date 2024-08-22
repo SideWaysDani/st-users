@@ -141,4 +141,3 @@ Quadrant.propTypes = {
 };
 
 export default Quadrant;
-

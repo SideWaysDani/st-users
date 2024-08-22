@@ -1,15 +1,10 @@
 const getTableData = (req, res, db) => {
-    db.select(
-        'battle_date',
-        'total_strength'
-    )
-        .from('war_clone_test.account_history as ah')
-        .whereIn(
-            'account_history_id',
-            db('war_clone_test.account_history')
-                .select(db.raw('MAX(account_history_id)'))
-                .groupBy('battle_date')
+    db('war_iter_3.account_history')
+        .select(
+            'battle_date',
+            db.raw('(MAX(active_strength) / AVG(total_strength)) * 100 AS total_strength')
         )
+        .groupBy('battle_date')
         .orderBy('battle_date')
         .then(accountHistoryItems => {
             if (accountHistoryItems.length) {
@@ -20,7 +15,6 @@ const getTableData = (req, res, db) => {
         })
         .catch(err => res.status(400).json({ dbError: 'db error' }));
 };
-
 
 
 const getTableData2 = (req, res, db) => {

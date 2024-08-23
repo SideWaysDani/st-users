@@ -158,7 +158,7 @@ function App() {
                     const currentIndex = battleDates.indexOf(prevDate);
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates.length) {
+                    if (nextIndex >= battleDates2.length) {
                         setIsPlaying2(false); 
                         clearInterval(interval);
                         return prevDate; 

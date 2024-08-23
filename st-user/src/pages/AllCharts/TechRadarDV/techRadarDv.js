@@ -155,22 +155,23 @@ function App() {
             setSelectedDate2(battleDates2[0]); 
             interval = setInterval(() => {
                 setSelectedDate2(prevDate => {
-                    const currentIndex = battleDates.indexOf(prevDate);
+                    const currentIndex = battleDates2.indexOf(prevDate); // Corrected line
                     const nextIndex = currentIndex + 1;
-
-                    if (nextIndex >= battleDates2.length) {
+    
+                    if (nextIndex >= battleDates2.length) { // Corrected line
                         setIsPlaying2(false); 
                         clearInterval(interval);
                         return prevDate; 
                     }
-
-                    return battleDates2[nextIndex];
+    
+                    return battleDates2[nextIndex]; // Corrected line
                 });
             }, 5000); 
         }
-
+    
         return () => clearInterval(interval);
     }, [isPlaying2, battleDates2]);
+    
 
 
     const determineRing = (percentageProfitAndLoss) => {

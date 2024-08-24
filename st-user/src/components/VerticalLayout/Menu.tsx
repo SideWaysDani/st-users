@@ -955,7 +955,7 @@ const menuItems: Array<MenuItemsProps> = [
         "subItems": [
             {
                 id: 145,
-                label: "Line Graph",
+                label: "Actual P&L Line Graph",
                 link: "/data-vizualization",
                 parentId: 144
             },
@@ -976,7 +976,15 @@ const menuItems: Array<MenuItemsProps> = [
                 label: "Strength Line Graph",
                 link: "/data-vizualization-4",
                 parentId: 144
+            },  
+            {
+                id: 149,
+                label: "Sector Line Graph",
+                link: "/data-vizualization-5",
+                parentId: 144
             },
+            
+            
         ]
     },
 ];

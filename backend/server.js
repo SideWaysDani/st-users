@@ -23,7 +23,7 @@ var db = require('knex')({
 const main = require('../st-user/src/components/DataVisualization/Controllers/main2');
 const main2 = require('../st-user/src/components/cplLineGraph/Controllers/main')
 const main3 = require('../st-user/src/components/StrengthLineGraph/Controllers/main3')
-
+const main4 = require('../st-user/src/components/SectorsGraph/Controllers/main4')
 // App
 const app = express();
 
@@ -41,6 +41,7 @@ app.get('/lineGraph1', (req, res) => main.getTableData(req, res, db));
 app.get('/lineGraph2', (req, res) => main.getTableData2(req, res, db));
 app.get('/strength1', (req, res) => main3.getTableData(req, res, db));
 app.get('/strength2', (req, res) => main3.getTableData2(req, res, db));
+app.get('/sector', (req, res) => main4.getTableData(req, res, db));
 app.get('/crud', (req, res) => main2.getTableData(req, res, db));
 app.get('/crudd', (req, res) => main2.getTableData2(req, res, db));
 app.post('/crud', (req, res) => main.postTableData(req, res, db));

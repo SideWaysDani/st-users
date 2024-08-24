@@ -97,9 +97,9 @@ const LineChart = ({ data }) => {
                 const sectorData = data.filter(item => item.sector === sector && item.Date === date);
                 return sectorData.length > 0 ? sectorData[0].PnL_Percentage : null;
             }),
-            backgroundColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 0.2)' :
-                              sector === 'Energy' ? 'rgba(54, 162, 235, 0.2)' :
-                              'rgba(75, 192, 192, 0.2)',
+            // backgroundColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 0.2)' :
+            //                   sector === 'Energy' ? 'rgba(54, 162, 235, 0.2)' :
+            //                   'rgba(75, 192, 192, 0.2)',
             borderColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 1)' :
                           sector === 'Energy' ? 'rgba(54, 162, 235, 1)' :
                           'rgba(75, 192, 192, 1)',

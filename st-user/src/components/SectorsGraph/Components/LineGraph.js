@@ -97,13 +97,11 @@ const LineChart = ({ data }) => {
                 const sectorData = data.filter(item => item.sector === sector && item.Date === date);
                 return sectorData.length > 0 ? sectorData[0].PnL_Percentage : null;
             }),
-            // backgroundColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 0.2)' :
-            //                   sector === 'Energy' ? 'rgba(54, 162, 235, 0.2)' :
-            //                   'rgba(75, 192, 192, 0.2)',
-            borderColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 1)' :
-                          sector === 'Energy' ? 'rgba(54, 162, 235, 1)' :
-                          'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
+            borderColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 1)' : // Red
+                          sector === 'Energy' ? 'rgba(44, 160, 44, 1)' :     // GREEN
+                          'rgba(255, 205, 86, 1)',                            // Purple
+            borderWidth: 2,
+            fill: false, // Remove the background fill
         };
     });
 
@@ -134,6 +132,14 @@ const LineChart = ({ data }) => {
                     display: true,
                     text: 'Profit and Loss Percentage',
                 },
+            },
+        },
+        plugins: {
+            legend: {
+                display: true,
+            },
+            tooltip: {
+                enabled: true,
             },
         },
     };

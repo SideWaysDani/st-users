@@ -95,7 +95,7 @@ const LineChart = ({ data }) => {
             label: sector,
             data: uniqueDates.map(date => {
                 const sectorData = data.filter(item => item.sector === sector && item.Date === date);
-                return sectorData.length > 0 ? sectorData[0].PnL_Percentage : null;
+                return sectorData.length > 0 ? sectorData[0].Profitandlosspercentage : null;
             }),
             borderColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 1)' : // Red
                           sector === 'Energy' ? 'rgba(44, 160, 44, 1)' :     // GREEN

@@ -144,6 +144,7 @@ import TechRadarDv from "src/pages/AllCharts/TechRadarDV/techRadarDv";
 import CplLineGraph from "src/pages/AllCharts/cplLineGraph/cplLineGraph";
 import StrengthLineGRaph from "src/pages/AllCharts/StrengthLineGraph/StrengthLineGraph";
 import SectorLineGraph from "src/pages/AllCharts/SectorLineGraph/SectorLineGraph";
+import CommittedStrength from "src/pages/AllCharts/CommittedStrengthLG/CommittedStrengthLG";
 
 //Icons
 import IconUnicon from "../pages/Icons/IconUnicon";
@@ -275,7 +276,8 @@ const userRoutes: Array<RouteProps> = [
   { path: "/data-vizualization-3", component: <CplLineGraph />},
   { path: "/data-vizualization-4", component: <StrengthLineGRaph />},
   { path: "/data-vizualization-5", component: <SectorLineGraph />},
- 
+  { path: "/data-vizualization-6", component: <CommittedStrength />},
+
   //Icons
   { path: "/icons-boxicons", component: <IconBoxicons/> },
   { path: "/icons-feathericons", component: <Feathericons/> },

@@ -1,6 +1,6 @@
 const getTableData = (req, res, db) => {
   // Subquery for FilteredAllocationHistory
-  const filteredAllocationHistory = db('war_clone_test.allocation_history')
+  const filteredAllocationHistory = db('war_iter_4.allocation_history')
       .select('battle_date')
       .sum('p_and_l as total_p_and_l')
       .whereIn('status', ['set_limit removing', 'stop_loss removing'])
@@ -17,7 +17,7 @@ const getTableData = (req, res, db) => {
       `)
   )
   .from(filteredAllocationHistory)
-  .join('war_clone_test.account_history as a', 'f.battle_date', 'a.battle_date')
+  .join('war_iter_4.account_history as a', 'f.battle_date', 'a.battle_date')
   .groupBy('f.battle_date', 'f.total_p_and_l')
   .orderBy('f.battle_date')
   .then(profitLossItems => {

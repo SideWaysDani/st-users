@@ -89,7 +89,41 @@ const LineChart = ({ data }) => {
                               .sort((a, b) => new Date(a) - new Date(b));
 
     // Initialize data sets for each sector
-    const sectors = ['Health Care', 'Energy', 'Technology'];
+    const sectors = [
+        'Health Care', 
+        'Energy', 
+        'Technology',
+        'Financials',
+        'Transportation',
+        'Retailing',
+        'Food, Beverages & Tobacco',
+        'Food & Drug Stores',
+        'Aerospace & Defense',
+        'Chemicals',
+        'Wholesalers',
+        'Industrials',
+        'Media',
+        'Telecommunications'
+    ];
+
+    // Assign distinguishable colors to each sector
+    const sectorColors = {
+        'Health Care': 'rgba(255, 99, 132, 1)', // Red
+        'Energy': 'rgba(44, 160, 44, 1)',       // Green
+        'Technology': 'rgba(255, 205, 86, 1)',  // Yellow
+        'Financials': 'rgba(75, 192, 192, 1)',  // Aqua
+        'Transportation': 'rgba(54, 162, 235, 1)', // Blue
+        'Retailing': 'rgba(153, 102, 255, 1)',  // Purple
+        'Food, Beverages & Tobacco': 'rgba(255, 159, 64, 1)', // Orange
+        'Food & Drug Stores': 'rgba(199, 199, 199, 1)', // Grey
+        'Aerospace & Defense': 'rgba(255, 99, 71, 1)', // Tomato
+        'Chemicals': 'rgba(255, 215, 0, 1)',    // Gold
+        'Wholesalers': 'rgba(50, 205, 50, 1)',  // LimeGreen
+        'Industrials': 'rgba(138, 43, 226, 1)', // BlueViolet
+        'Media': 'rgba(255, 140, 0, 1)',        // DarkOrange
+        'Telecommunications': 'rgba(70, 130, 180, 1)', // SteelBlue
+    };
+
     const datasets = sectors.map(sector => {
         return {
             label: sector,
@@ -97,10 +131,8 @@ const LineChart = ({ data }) => {
                 const sectorData = data.filter(item => item.sector === sector && item.Date === date);
                 return sectorData.length > 0 ? sectorData[0].Profitandlosspercentage : null;
             }),
-            borderColor: sector === 'Health Care' ? 'rgba(255, 99, 132, 1)' : // Red
-                          sector === 'Energy' ? 'rgba(44, 160, 44, 1)' :     // GREEN
-                          'rgba(255, 205, 86, 1)',                            // Purple
-            borderWidth: 2,
+            borderColor: sectorColors[sector],
+            borderWidth: 1,
             fill: false, // Remove the background fill
         };
     });

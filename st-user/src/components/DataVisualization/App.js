@@ -125,7 +125,7 @@ const App = () => {
   // Function to fetch items from the server
   const getItems = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/crud`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph1`);
       //const response = await fetch('http://localhost:5000/lineGraph1');
       const data = await response.json();
       setItems(data);
@@ -263,7 +263,7 @@ const App = () => {
       </Row> */}
       <Row>
         <Col>
-        <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 2 - war_clone_test</h1>
+        <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 4 - war_iter_4</h1>
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}

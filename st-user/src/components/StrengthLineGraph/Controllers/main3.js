@@ -1,10 +1,15 @@
 const getTableData = (req, res, db) => {
-    db('war_iter_3.account_history')
-        .select(
-            'battle_date',
-            db.raw('(MAX(active_strength) / AVG(total_strength)) * 100 AS total_strength')
+    db.select(
+        'battle_date',
+        'total_strength'
+    )
+        .from('war_iter_4.account_history as ah')
+        .whereIn(
+            'account_history_id',
+            db('war_iter_4.account_history')
+                .select(db.raw('MAX(account_history_id)'))
+                .groupBy('battle_date')
         )
-        .groupBy('battle_date')
         .orderBy('battle_date')
         .then(accountHistoryItems => {
             if (accountHistoryItems.length) {

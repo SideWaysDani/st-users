@@ -24,6 +24,7 @@ const main = require('../st-user/src/components/DataVisualization/Controllers/ma
 const main2 = require('../st-user/src/components/cplLineGraph/Controllers/main')
 const main3 = require('../st-user/src/components/StrengthLineGraph/Controllers/main3')
 const main4 = require('../st-user/src/components/SectorsGraph/Controllers/main4')
+const main5 = require('../st-user/src/components/CommittedStrengthLineGraph/Controllers/main5')
 // App
 const app = express();
 
@@ -41,16 +42,16 @@ app.get('/lineGraph1', (req, res) => main.getTableData(req, res, db));
 app.get('/lineGraph2', (req, res) => main.getTableData2(req, res, db));
 app.get('/strength1', (req, res) => main3.getTableData(req, res, db));
 app.get('/strength2', (req, res) => main3.getTableData2(req, res, db));
+app.get('/cstrength1', (req, res) => main5.getTableData(req, res, db));
+app.get('/cstrength2', (req, res) => main5.getTableData2(req, res, db));
 app.get('/sector1', (req, res) => main4.getTableData(req, res, db));
 app.get('/sector2', (req, res) => main4.getTableData2(req, res, db));
 app.get('/sector3', (req, res) => main4.getTableData3(req, res, db));
 app.get('/sector4', (req, res) => main4.getTableData4(req, res, db));
-app.get('/crud', (req, res) => main2.getTableData(req, res, db));
-app.get('/crudd', (req, res) => main2.getTableData2(req, res, db));
-app.post('/crud', (req, res) => main.postTableData(req, res, db));
-app.put('/crud', (req, res) => main.putTableData(req, res, db));
-app.delete('/crud', (req, res) => main.deleteTableData(req, res, db));
+app.get('/apnl1', (req, res) => main2.getTableData(req, res, db));
+app.get('/apnl2', (req, res) => main2.getTableData2(req, res, db));
 
+// iteration 3 - war_iter_3
 app.get('/api/dataa', async (req, res) => {
   try {
       const query = `
@@ -107,6 +108,8 @@ app.get('/api/dataa', async (req, res) => {
   }
 });
 
+
+// iteration 4 - war_iter_4
 app.get('/api/data', async (req, res) => {
   try {
       const query = `
@@ -124,13 +127,13 @@ app.get('/api/data', async (req, res) => {
               f.ticker,
               f.sector
           FROM 
-              war_clone_test.performance p
+              war_iter_4.performance p
           LEFT JOIN 
-              war_clone_test.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+              war_iter_4.deployment d ON p.unit_assignment_id = d.unit_assignment_id
           LEFT JOIN 
-              war_clone_test.allocation a ON d.deployment_id = a.deployment_id
+              war_iter_4.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN 
-              war_clone_test.leads l ON p.lead_id = l.leads_id
+              war_iter_4.leads l ON p.lead_id = l.leads_id
           LEFT JOIN 
               stocktrader.fortune_1000 f ON l.stock_name = f.ticker
       `;

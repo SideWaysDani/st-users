@@ -978,6 +978,12 @@ const menuItems: Array<MenuItemsProps> = [
                 parentId: 144
             },  
             {
+                id: 150,
+                label: "Committed Strength Line Graph",
+                link: "/data-vizualization-6",
+                parentId: 144
+            },
+            {
                 id: 149,
                 label: "Sector Line Graph",
                 link: "/data-vizualization-5",

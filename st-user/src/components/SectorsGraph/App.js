@@ -127,13 +127,17 @@ const App = () => {
         <Container className="App">
             <Row>
                 <Col>
+                <br/><br/><br/>
                     <h1 style={{ margin: '20px 0' }}>Sector Summary - stocktrader.sector_summary</h1>
                     <h1 style={{ margin: '20px 0' }}>9 Days Average Profit and Loss Percentage</h1>
                     {isLoading ? <p>Loading data...</p> : <LineGraph data={items} />}
+                    <br/><br/>
                     <h1 style={{ margin: '20px 0' }}>30 Days Average Profit and Loss Percentage</h1>
                     {isLoading ? <p>Loading data...</p> : <LineGraph data={items2} />}
+                    <br/><br/>
                     <h1 style={{ margin: '20px 0' }}>60 Days Average Profit and Loss Percentage</h1>
                     {isLoading ? <p>Loading data...</p> : <LineGraph data={items3} />}
+                    <br/><br/>
                     <h1 style={{ margin: '20px 0' }}>90 Days Average Profit and Loss Percentage</h1>
                     {isLoading ? <p>Loading data...</p> : <LineGraph data={items4} />}
 

@@ -1,102 +1,103 @@
 const getTableData = (req, res, db) => {
   // Subquery for FilteredAllocationHistory
   const filteredAllocationHistory = db('war_iter_4.allocation_history')
-      .select('battle_date')
-      .sum('p_and_l as total_p_and_l')
-      .whereIn('status', ['set_limit removing', 'stop_loss removing'])
-      .groupBy('battle_date')
-      .as('f');
+    .select('battle_date')
+    .sum('p_and_l as total_p_and_l')
+    .whereIn('status', ['set_limit removing', 'stop_loss removing'])
+    .groupBy('battle_date')
+    .as('f');
 
   db.select(
-      'f.battle_date',
-      db.raw(`
+    'f.battle_date',
+    db.raw(`
           CASE
               WHEN MAX(a.total_strength) = 0 THEN 0
               ELSE (f.total_p_and_l / MAX(a.total_strength)) * 100
           END AS percentage_profit_and_loss
       `)
   )
-  .from(filteredAllocationHistory)
-  .join('war_iter_4.account_history as a', 'f.battle_date', 'a.battle_date')
-  .groupBy('f.battle_date', 'f.total_p_and_l')
-  .orderBy('f.battle_date')
-  .then(profitLossItems => {
+    .from(filteredAllocationHistory)
+    .join('war_iter_4.account_history as a', 'f.battle_date', 'a.battle_date')
+    .groupBy('f.battle_date', 'f.total_p_and_l')
+    .orderBy('f.battle_date')
+    .then(profitLossItems => {
       if (profitLossItems.length) {
-          res.json(profitLossItems);
+        res.json(profitLossItems);
       } else {
-          res.json({ dataExists: 'false' });
+        res.json({ dataExists: 'false' });
       }
-  })
-  .catch(err => res.status(400).json({ dbError: 'db error' }));
+    })
+    .catch(err => res.status(400).json({ dbError: 'db error' }));
 };
 
 
 const getTableData2 = (req, res, db) => {
   // Subquery for FilteredAllocationHistory
   const filteredAllocationHistory = db('war_iter_3.allocation_history')
-      .select('battle_date')
-      .sum('p_and_l as total_p_and_l')
-      .whereIn('status', ['set_limit removing', 'stop_loss removing', 'api_signal sell'])
-      .groupBy('battle_date')
-      .as('f');
+    .select('battle_date')
+    .sum('p_and_l as total_p_and_l')
+    .whereIn('status', ['set_limit removing', 'stop_loss removing', 'api_signal sell'])
+    .groupBy('battle_date')
+    .as('f');
 
   db.select(
-      'f.battle_date',
-      db.raw(`
+    'f.battle_date',
+    db.raw(`
           CASE
               WHEN MAX(a.total_strength) = 0 THEN 0
               ELSE (f.total_p_and_l / MAX(a.total_strength)) * 100
           END AS percentage_profit_and_loss
       `)
   )
-  .from(filteredAllocationHistory)
-  .join('war_iter_3.account_history as a', 'f.battle_date', 'a.battle_date')
-  .groupBy('f.battle_date', 'f.total_p_and_l')
-  .orderBy('f.battle_date')
-  .then(profitLossItems => {
+    .from(filteredAllocationHistory)
+    .join('war_iter_3.account_history as a', 'f.battle_date', 'a.battle_date')
+    .groupBy('f.battle_date', 'f.total_p_and_l')
+    .orderBy('f.battle_date')
+    .then(profitLossItems => {
       if (profitLossItems.length) {
-          res.json(profitLossItems);
+        res.json(profitLossItems);
       } else {
-          res.json({ dataExists: 'false' });
+        res.json({ dataExists: 'false' });
       }
-  })
-  .catch(err => res.status(400).json({ dbError: 'db error' }));
+    })
+    .catch(err => res.status(400).json({ dbError: 'db error' }));
 };
 
-const postTableData = (req, res, db) => {
-  const { summary_id, battle_date, profit_and_loss } = req.body
-  const added = new Date()
-  db('war.summary').insert({ summary_id, battle_date, profit_and_loss, added })
-    .returning('*')
-    .then(item => {
-      res.json(item)
-    })
-    .catch(err => res.status(400).json({ dbError: 'db error' }))
-}
+const getTableData3 = (req, res, db) => {
+  // Subquery for FilteredAllocationHistory
+  const filteredAllocationHistory = db('war_iter_4_2.allocation_history')
+    .select('battle_date')
+    .sum('p_and_l as total_p_and_l')
+    .whereIn('status', ['set_limit removing', 'stop_loss removing'])
+    .groupBy('battle_date')
+    .as('f');
 
-const putTableData = (req, res, db) => {
-  const { summary_id, battle_date, profit_and_loss } = req.body
-  db('war.summary').where({ summary_id }).update({ summary_id, battle_date, profit_and_loss })
-    .returning('*')
-    .then(item => {
-      res.json(item)
+  db.select(
+    'f.battle_date',
+    db.raw(`
+          CASE
+              WHEN MAX(a.total_strength) = 0 THEN 0
+              ELSE (f.total_p_and_l / MAX(a.total_strength)) * 100
+          END AS percentage_profit_and_loss
+      `)
+  )
+    .from(filteredAllocationHistory)
+    .join('war_iter_4_2.account_history as a', 'f.battle_date', 'a.battle_date')
+    .groupBy('f.battle_date', 'f.total_p_and_l')
+    .orderBy('f.battle_date')
+    .then(profitLossItems => {
+      if (profitLossItems.length) {
+        res.json(profitLossItems);
+      } else {
+        res.json({ dataExists: 'false' });
+      }
     })
-    .catch(err => res.status(400).json({ dbError: 'db error' }))
-}
+    .catch(err => res.status(400).json({ dbError: 'db error' }));
+};
 
-const deleteTableData = (req, res, db) => {
-  const { summary_id } = req.body
-  db('war.summary').where({ summary_id }).del()
-    .then(() => {
-      res.json({ delete: 'true' })
-    })
-    .catch(err => res.status(400).json({ dbError: 'db error' }))
-}
 
 module.exports = {
   getTableData,
-  postTableData,
-  putTableData,
-  deleteTableData,
-  getTableData2
+  getTableData2,
+  getTableData3
 }

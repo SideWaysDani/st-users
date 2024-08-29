@@ -148,7 +148,7 @@ const App = () => {
         <h1 style={{ margin: '20px 0' }}>Committed Strength - Iteration 4 - war_iter_4</h1>
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Committed Strength - Iteration 4.2 - war_iter_4_2</h1>
-          <LineGraph data={items} /> {/* Pass data as props to LineChart */}
+          <LineGraph data={items3} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Committed strength - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>

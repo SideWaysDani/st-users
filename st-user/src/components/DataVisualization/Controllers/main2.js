@@ -3,7 +3,7 @@ const getTableData = (req, res, db) => {
   const filteredAllocationHistory = db('war_iter_4.allocation_history')
     .select('battle_date')
     .sum('p_and_l as total_p_and_l')
-    .whereIn('status', ['set_limit removing', 'stop_loss removing'])
+    .whereIn('status', ['set_limit removing', 'stop_loss removing', 'api_signal sell'])
     .groupBy('battle_date')
     .as('f');
 
@@ -68,7 +68,7 @@ const getTableData3 = (req, res, db) => {
   const filteredAllocationHistory = db('war_iter_4_2.allocation_history')
     .select('battle_date')
     .sum('p_and_l as total_p_and_l')
-    .whereIn('status', ['set_limit removing', 'stop_loss removing'])
+    .whereIn('status', ['set_limit removing', 'stop_loss removing', 'api_signal sell'])
     .groupBy('battle_date')
     .as('f');
 

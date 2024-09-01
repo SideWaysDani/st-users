@@ -120,6 +120,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [items2, setItems2] = useState([]);
   const [items3, setItems3] = useState([]);
+  const [items4, setItems4] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [editableId, setEditableId] = useState(null);
 
@@ -210,6 +211,31 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        //const response = await fetch('http://localhost:5000/strength3');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/strength4`);
+        const data = await response.json();
+
+        // Format the dates
+        const formattedData = data.map(item4 => ({
+          ...item4,
+          battle_date: new Date(item4.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+        }));
+
+        setItems4(formattedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Container className="App">
       <Row>
@@ -261,6 +287,8 @@ const App = () => {
           <LineGraph data={items} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Total Strength - Iteration 4.2 - war_iter_4_2</h1>
           <LineGraph data={items3} /> {/* Pass data as props to LineChart */}
+          <h1 style={{ margin: '20px 0' }}>Total Strength - Iteration 4.3 - war_iter_4_3</h1>
+          <LineGraph data={items4} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Total strength - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>

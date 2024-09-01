@@ -31,6 +31,16 @@ function App() {
     const [selectedDate3, setSelectedDate3] = useState('');
     const [isPlaying3, setIsPlaying3] = useState(false);
 
+    const [setup4, setSetup4] = useState({
+        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+        quadrants: [],
+        data: []
+    });
+
+    const [battleDates4, setBattleDates4] = useState([]);
+    const [selectedDate4, setSelectedDate4] = useState('');
+    const [isPlaying4, setIsPlaying4] = useState(false);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -287,6 +297,88 @@ function App() {
         }
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                console.log('API URL:', process.env.REACT_APP_API_URL);
+
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data4.3`);
+                //const response = await fetch('http://localhost:5000/api/dataa');
+                const data = await response.json();
+
+                console.log('Fetched data:', data);
+
+                if (Array.isArray(data)) {
+                    const uniqueBattleDates4 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
+                    const sectors4 = [...new Set(data.map(item => item.sector))];
+                    const mappedData4 = data.map(item => ({
+                        name: `Unit ${item.unit_assignment_id}`,
+                        quadrant: item.sector,
+                        ring: determineRing(parseFloat(item.percentageprofitandloss)),
+                        percentageprofitandloss: item.percentageprofitandloss,
+                        profit_and_loss: item.profit_and_loss,
+                        unit_assignment_id: item.unit_assignment_id,
+                        stock_name: item.stock_name,
+                        battle_date: item.battle_date.split('T')[0]
+                    }));
+
+                    console.log('Mapped data:', mappedData4);
+
+                    setBattleDates4(uniqueBattleDates4);
+                    setSetup3({
+                        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+                        quadrants: sectors4,
+                        data: mappedData4
+                    });
+                } else {
+                    console.error('API response is not an array:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        let interval;
+        if (isPlaying4) {
+            setSelectedDate4(battleDates4[0]);
+            interval = setInterval(() => {
+                setSelectedDate4(prevDate => {
+                    const currentIndex = battleDates4.indexOf(prevDate); // Corrected line
+                    const nextIndex = currentIndex + 1;
+
+                    if (nextIndex >= battleDates4.length) { // Corrected line
+                        setIsPlaying4(false);
+                        clearInterval(interval);
+                        return prevDate;
+                    }
+
+                    return battleDates4[nextIndex]; // Corrected line
+                });
+            }, 5000);
+        }
+
+        return () => clearInterval(interval);
+    }, [isPlaying4, battleDates4]);
+
+    const filteredData4 = selectedDate4
+        ? setup4.data.filter(item => item.battle_date === selectedDate4)
+        : setup4.data;
+
+    const handlePlayClick4 = () => {
+        if (isPlaying4) {
+            setIsPlaying4(false);
+        } else {
+            setSelectedDate4(battleDates4[0]);
+            setIsPlaying4(true);
+        }
+    };
+
     //console.log('Setup quadrants:', setup.quadrants);
 
     return (
@@ -320,6 +412,28 @@ function App() {
                         <select onChange={(e) => setSelectedDate3(e.target.value)} value={selectedDate3} disabled={isPlaying3}>
                             <option value="">Select Battle Date</option>
                             {battleDates3.map((date, index) => (
+                                <option key={index} value={date}>
+                                    {date}
+                                </option>
+                            ))}
+                        </select>
+                        <button onClick={handlePlayClick3}>
+                            {isPlaying3 ? 'Stop' : 'Play'}
+                        </button>
+                    </div>
+                    <div className="chart-container" style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
+                        <RadarTimer {...setup} data={filteredData3} animate={isPlaying} />
+                    </div>
+                </div>
+            </div>
+
+            <div style={{ marginTop: '100px', marginLeft: '0px' }}>
+                <div className="App">
+                    <h1 style={{ margin: '20px 0' }}>Tech Radar Graph - Iteration 4.3 - war_iter_4_3</h1>
+                    <div className="dropdown-container">
+                        <select onChange={(e) => setSelectedDate4(e.target.value)} value={selectedDate4} disabled={isPlaying4}>
+                            <option value="">Select Battle Date</option>
+                            {battleDates4.map((date, index) => (
                                 <option key={index} value={date}>
                                     {date}
                                 </option>

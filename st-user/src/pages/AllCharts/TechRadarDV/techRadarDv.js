@@ -3,7 +3,7 @@ import RadarTimer from '../../../components/TechRadarDV/Radar/RadarTimer';
 
 function App() {
     const [setup, setSetup] = useState({
-        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
         quadrants: [],
         data: []
     });
@@ -12,7 +12,7 @@ function App() {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const [setup2, setSetup2] = useState({
-        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+        rrings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
         quadrants: [],
         data: []
     });
@@ -22,7 +22,7 @@ function App() {
     const [isPlaying2, setIsPlaying2] = useState(false);
 
     const [setup3, setSetup3] = useState({
-        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
         quadrants: [],
         data: []
     });
@@ -32,7 +32,7 @@ function App() {
     const [isPlaying3, setIsPlaying3] = useState(false);
 
     const [setup4, setSetup4] = useState({
-        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
         quadrants: [],
         data: []
     });
@@ -71,7 +71,7 @@ function App() {
 
                     setBattleDates(uniqueBattleDates);
                     setSetup({
-                        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+                        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
                         quadrants: sectors,
                         data: mappedData
                     });
@@ -155,7 +155,7 @@ function App() {
 
                     setBattleDates2(uniqueBattleDates2);
                     setSetup2({
-                        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+                        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
                         quadrants: sectors2,
                         data: mappedData2
                     });
@@ -196,10 +196,13 @@ function App() {
 
 
     const determineRing = (percentageProfitAndLoss) => {
+        // Updated to match new ring ranges
         if (percentageProfitAndLoss < 0) return '-50,0';
-        if (percentageProfitAndLoss >= 0 && percentageProfitAndLoss <= 5) return '0-5';
-        if (percentageProfitAndLoss > 5 && percentageProfitAndLoss <= 10) return '5-10';
-        return 'above 10';
+        if (percentageProfitAndLoss >= 0 && percentageProfitAndLoss <= 10) return '0-10';
+        if (percentageProfitAndLoss > 10 && percentageProfitAndLoss <= 20) return '10-20';
+        if (percentageProfitAndLoss > 20 && percentageProfitAndLoss <= 30) return '20-30';
+        if (percentageProfitAndLoss > 30 && percentageProfitAndLoss <= 40) return '30-40';
+        return 'above 40';
     };
 
     const filteredData2 = selectedDate2
@@ -246,7 +249,7 @@ function App() {
 
                     setBattleDates3(uniqueBattleDates3);
                     setSetup3({
-                        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+                        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
                         quadrants: sectors3,
                         data: mappedData3
                     });
@@ -328,7 +331,7 @@ function App() {
 
                     setBattleDates4(uniqueBattleDates4);
                     setSetup3({
-                        rings: ['-50,0', '0-5', '5-10', 'above 10'],
+                        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
                         quadrants: sectors4,
                         data: mappedData4
                     });
@@ -422,7 +425,7 @@ function App() {
                         </button>
                     </div>
                     <div className="chart-container" style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
-                        <RadarTimer {...setup} data={filteredData3} animate={isPlaying} />
+                        <RadarTimer {...setup} data={filteredData3} animate={isPlaying3} />
                     </div>
                 </div>
             </div>
@@ -439,12 +442,12 @@ function App() {
                                 </option>
                             ))}
                         </select>
-                        <button onClick={handlePlayClick3}>
-                            {isPlaying3 ? 'Stop' : 'Play'}
+                        <button onClick={handlePlayClick4}>
+                            {isPlaying4 ? 'Stop' : 'Play'}
                         </button>
                     </div>
                     <div className="chart-container" style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
-                        <RadarTimer {...setup} data={filteredData3} animate={isPlaying} />
+                        <RadarTimer {...setup} data={filteredData4} animate={isPlaying4} />
                     </div>
                 </div>
             </div>

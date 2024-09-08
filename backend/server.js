@@ -10,13 +10,13 @@ const morgan = require('morgan'); // logs requests
 
 // db Connection w/ localhost
 var db = require('knex')({
-  client: 'pg',
-  connection: {
-    host: process.env.DB_HOST || 'sthub.c3uguk04fjqb.ap-southeast-2.rds.amazonaws.com',
-    user: process.env.DB_USER || 'stpostgres',
-    password: process.env.DB_PASSWORD || 'stocktrader',
-    database: process.env.DB_DATABASE || 'postgres'
-  }
+    client: 'pg',
+    connection: {
+        host: process.env.DB_HOST || 'sthub.c3uguk04fjqb.ap-southeast-2.rds.amazonaws.com',
+        user: process.env.DB_USER || 'stpostgres',
+        password: process.env.DB_PASSWORD || 'stocktrader',
+        database: process.env.DB_DATABASE || 'postgres'
+    }
 });
 
 // Controllers - aka, the db queries
@@ -30,8 +30,8 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-  credentials: true,
-  origin: ["http://localhost:3000", "http://localhost:5001", "http://34.203.90.103:3000"] // Add your frontend's URL here
+    credentials: true,
+    origin: ["http://localhost:3000", "http://localhost:5001", "http://34.203.90.103:3000"] // Add your frontend's URL here
 }));
 
 app.use(bodyParser.json());
@@ -66,9 +66,9 @@ app.get('/apnl4', (req, res) => main.getTableData4(req, res, db));
 
 // iteration 3 - war_iter_3
 app.get('/api/dataa', async (req, res) => {
-  try {
-      const query = `
-          SELECT 
+    try {
+        const query = `
+          SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -81,52 +81,54 @@ app.get('/api/dataa', async (req, res) => {
               l.stock_name,
               f.ticker,
               f.sector
-          FROM 
+          FROM
               war_iter_3.performance p
-          LEFT JOIN 
+          LEFT JOIN
               war_iter_3.deployment d ON p.unit_assignment_id = d.unit_assignment_id
-          LEFT JOIN 
+          LEFT JOIN
               war_iter_3.allocation a ON d.deployment_id = a.deployment_id
-          LEFT JOIN 
-              war_iter_3.leads l ON p.lead_id = l.leads_id
-          LEFT JOIN 
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker
+          LEFT JOIN
+              stocktrader.leads l on p.lead_id = l.id
+          LEFT JOIN
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+          order by
+          	  p.battle_date asc
       `;
 
-      const data = await db.raw(query);
+        const data = await db.raw(query);
 
-      const formattedData = data.rows.map(row => ({
-          performance_id: row.performance_id,
-          unit_assignment_id: row.unit_assignment_id,
-          profit_and_loss: row.profit_and_loss,
-          battle_date: row.battle_date,
-          lead_id: row.lead_id,
-          percentageprofitandloss: row.percentageprofitandloss,
-          start_date: row.start_date,
-          end_date: row.end_date,
-          status: row.status,
-          quadrant: row.lead_id,
-          stock_name: row.stock_name,
-          ticker: row.ticker,
-          sector: row.sector,
-          color: row.profit_and_loss >= 0 ? 'green' : 'red'
-      }));
+        const formattedData = data.rows.map(row => ({
+            performance_id: row.performance_id,
+            unit_assignment_id: row.unit_assignment_id,
+            profit_and_loss: row.profit_and_loss,
+            battle_date: row.battle_date,
+            lead_id: row.lead_id,
+            percentageprofitandloss: row.percentageprofitandloss,
+            start_date: row.start_date,
+            end_date: row.end_date,
+            status: row.status,
+            quadrant: row.lead_id,
+            stock_name: row.stock_name,
+            ticker: row.ticker,
+            sector: row.sector,
+            color: row.profit_and_loss >= 0 ? 'green' : 'red'
+        }));
 
-      console.log('Formatted Data:', formattedData);
+        console.log('Formatted Data:', formattedData);
 
-      res.json(formattedData);
-  } catch (error) {
-      console.error('Error fetching data:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
+        res.json(formattedData);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 
 // iteration 4 - war_iter_4
 app.get('/api/data', async (req, res) => {
-  try {
-      const query = `
-          SELECT 
+    try {
+        const query = `
+          SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -139,77 +141,81 @@ app.get('/api/data', async (req, res) => {
               l.stock_name,
               f.ticker,
               f.sector
-          FROM 
+          FROM
               war_iter_4.performance p
-          LEFT JOIN 
+          LEFT JOIN
               war_iter_4.deployment d ON p.unit_assignment_id = d.unit_assignment_id
-          LEFT JOIN 
+          LEFT JOIN
               war_iter_4.allocation a ON d.deployment_id = a.deployment_id
-          LEFT JOIN 
-              war_iter_4.leads l ON p.lead_id = l.leads_id
-          LEFT JOIN 
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker
+          LEFT JOIN
+              stocktrader.leads l on p.lead_id = l.id
+          LEFT JOIN
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+          order by
+          	  p.battle_date asc
       `;
 
-      const data = await db.raw(query);
+        const data = await db.raw(query);
 
-      const formattedData = data.rows.map(row => ({
-          performance_id: row.performance_id,
-          unit_assignment_id: row.unit_assignment_id,
-          profit_and_loss: row.profit_and_loss,
-          battle_date: row.battle_date,
-          lead_id: row.lead_id,
-          percentageprofitandloss: row.percentageprofitandloss,
-          start_date: row.start_date,
-          end_date: row.end_date,
-          status: row.status,
-          quadrant: row.lead_id,
-          stock_name: row.stock_name,
-          ticker: row.ticker,
-          sector: row.sector,
-          color: row.profit_and_loss >= 0 ? 'green' : 'red'
-      }));
+        const formattedData = data.rows.map(row => ({
+            performance_id: row.performance_id,
+            unit_assignment_id: row.unit_assignment_id,
+            profit_and_loss: row.profit_and_loss,
+            battle_date: row.battle_date,
+            lead_id: row.lead_id,
+            percentageprofitandloss: row.percentageprofitandloss,
+            start_date: row.start_date,
+            end_date: row.end_date,
+            status: row.status,
+            quadrant: row.lead_id,
+            stock_name: row.stock_name,
+            ticker: row.ticker,
+            sector: row.sector,
+            color: row.profit_and_loss >= 0 ? 'green' : 'red'
+        }));
 
-      console.log('Formatted Data:', formattedData);
+        console.log('Formatted Data:', formattedData);
 
-      res.json(formattedData);
-  } catch (error) {
-      console.error('Error fetching data:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
+        res.json(formattedData);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 // iteration 4 - war_iter_4_2
 app.get('/api/data4.2', async (req, res) => {
     try {
         const query = `
-            SELECT 
-                p.performance_id,
-                p.unit_assignment_id,
-                p.profit_and_loss,
-                p.battle_date,
-                p.lead_id,
-                p.percentageprofitandloss,
-                d.start_date,
-                d.end_date,
-                d.status,
-                l.stock_name,
-                f.ticker,
-                f.sector
-            FROM 
-                war_iter_4_2.performance p
-            LEFT JOIN 
-                war_iter_4_2.deployment d ON p.unit_assignment_id = d.unit_assignment_id
-            LEFT JOIN 
-                war_iter_4_2.allocation a ON d.deployment_id = a.deployment_id
-            LEFT JOIN 
-                war_iter_4_2.leads l ON p.lead_id = l.leads_id
-            LEFT JOIN 
-                stocktrader.fortune_1000 f ON l.stock_name = f.ticker
+            SELECT
+              p.performance_id,
+              p.unit_assignment_id,
+              p.profit_and_loss,
+              p.battle_date,
+              p.lead_id,
+              p.percentageprofitandloss,
+              d.start_date,
+              d.end_date,
+              d.status,
+              l.stock_name,
+              f.ticker,
+              f.sector
+          FROM
+              war_iter_4_2.performance p
+          LEFT JOIN
+              war_iter_4_2.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+          LEFT JOIN
+              war_iter_4_2.allocation a ON d.deployment_id = a.deployment_id
+          LEFT JOIN
+              stocktrader.leads l on p.lead_id = l.id
+          LEFT JOIN
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+          order by
+          	  p.battle_date asc
         `;
-  
+
         const data = await db.raw(query);
-  
+
         const formattedData = data.rows.map(row => ({
             performance_id: row.performance_id,
             unit_assignment_id: row.unit_assignment_id,
@@ -226,49 +232,51 @@ app.get('/api/data4.2', async (req, res) => {
             sector: row.sector,
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
-  
+
         console.log('Formatted Data:', formattedData);
-  
+
         res.json(formattedData);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
 
-  // iteration 4.3
+// iteration 4.3
 
-  app.get('/api/data4.3', async (req, res) => {
+app.get('/api/data4.3', async (req, res) => {
     try {
         const query = `
-            SELECT 
-                p.performance_id,
-                p.unit_assignment_id,
-                p.profit_and_loss,
-                p.battle_date,
-                p.lead_id,
-                p.percentageprofitandloss,
-                d.start_date,
-                d.end_date,
-                d.status,
-                l.stock_name,
-                f.ticker,
-                f.sector
-            FROM 
-                war_iter_4_3.performance p
-            LEFT JOIN 
-                war_iter_4_3.deployment d ON p.unit_assignment_id = d.unit_assignment_id
-            LEFT JOIN 
-                war_iter_4_3.allocation a ON d.deployment_id = a.deployment_id
-            LEFT JOIN 
-                war_iter_4_3.leads l ON p.lead_id = l.leads_id
-            LEFT JOIN 
-                stocktrader.fortune_1000 f ON l.stock_name = f.ticker
+            SELECT
+              p.performance_id,
+              p.unit_assignment_id,
+              p.profit_and_loss,
+              p.battle_date,
+              p.lead_id,
+              p.percentageprofitandloss,
+              d.start_date,
+              d.end_date,
+              d.status,
+              l.stock_name,
+              f.ticker,
+              f.sector
+          FROM
+              war_iter_4_3.performance p
+          LEFT JOIN
+              war_iter_4_3.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+          LEFT JOIN
+              war_iter_4_3.allocation a ON d.deployment_id = a.deployment_id
+          LEFT JOIN
+              stocktrader.leads l on p.lead_id = l.id
+          LEFT JOIN
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+          order by
+          	  p.battle_date asc
         `;
-  
+
         const data = await db.raw(query);
-  
+
         const formattedData = data.rows.map(row => ({
             performance_id: row.performance_id,
             unit_assignment_id: row.unit_assignment_id,
@@ -285,20 +293,20 @@ app.get('/api/data4.2', async (req, res) => {
             sector: row.sector,
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
-  
+
         console.log('Formatted Data:', formattedData);
-  
+
         res.json(formattedData);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
 // Define the port variable
 const port = process.env.PORT || 5000;
 
 // App server connection
 app.listen(port, () => {
-  console.log(`App is running on port ${port}`);
+    console.log(`App is running on port ${port}`);
 });

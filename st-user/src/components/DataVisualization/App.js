@@ -121,6 +121,8 @@ const App = () => {
   const [items2, setItems2] = useState([]);
   const [items3, setItems3] = useState([]);
   const [items4, setItems4] = useState([]);
+  const [items5, setItems5] = useState([]);
+  const [items6, setItems6] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [editableId, setEditableId] = useState(null);
 
@@ -257,6 +259,60 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph5`);
+        //const response = await fetch('http://localhost:5000/lineGraph2');
+        const data = await response.json();
+
+        
+        // Format the dates
+        const formattedData = data.map(item5 => ({
+          ...item5,
+          
+          battle_date: new Date(item5.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+        }));
+
+        setItems5(formattedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph6`);
+        //const response = await fetch('http://localhost:5000/lineGraph2');
+        const data = await response.json();
+
+        
+        // Format the dates
+        const formattedData = data.map(item6 => ({
+          ...item6,
+          
+          battle_date: new Date(item6.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+        }));
+
+        setItems6(formattedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Container className="App">
       <Row>
@@ -310,6 +366,10 @@ const App = () => {
           <LineGraph data={items3} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 4.3 - war_iter_4_3</h1>
           <LineGraph data={items4} /> {/* Pass data as props to LineChart */}
+          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 4.4 - war_iter_4_4</h1>
+          <LineGraph data={items5} /> {/* Pass data as props to LineChart */}
+          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 5 - war_iter_5</h1>
+          <LineGraph data={items6} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 3 - war_iter_3</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
           

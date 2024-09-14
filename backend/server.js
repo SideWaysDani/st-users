@@ -42,16 +42,22 @@ app.get('/lineGraph1', (req, res) => main2.getTableData(req, res, db));
 app.get('/lineGraph2', (req, res) => main2.getTableData2(req, res, db));
 app.get('/lineGraph3', (req, res) => main2.getTableData3(req, res, db));
 app.get('/lineGraph4', (req, res) => main2.getTableData4(req, res, db));
+app.get('/lineGraph5', (req, res) => main2.getTableData5(req, res, db));
+app.get('/lineGraph6', (req, res) => main2.getTableData6(req, res, db));
 
 app.get('/strength1', (req, res) => main3.getTableData(req, res, db));
 app.get('/strength2', (req, res) => main3.getTableData2(req, res, db));
 app.get('/strength3', (req, res) => main3.getTableData3(req, res, db));
 app.get('/strength4', (req, res) => main3.getTableData4(req, res, db));
+app.get('/strength5', (req, res) => main3.getTableData5(req, res, db));
+app.get('/strength6', (req, res) => main3.getTableData6(req, res, db));
 
 app.get('/cstrength1', (req, res) => main5.getTableData(req, res, db));
 app.get('/cstrength2', (req, res) => main5.getTableData2(req, res, db));
 app.get('/cstrength3', (req, res) => main5.getTableData3(req, res, db));
 app.get('/cstrength4', (req, res) => main5.getTableData4(req, res, db));
+app.get('/cstrength5', (req, res) => main5.getTableData5(req, res, db));
+app.get('/cstrength6', (req, res) => main5.getTableData6(req, res, db));
 
 app.get('/sector1', (req, res) => main4.getTableData(req, res, db));
 app.get('/sector2', (req, res) => main4.getTableData2(req, res, db));
@@ -62,6 +68,8 @@ app.get('/apnl1', (req, res) => main.getTableData(req, res, db));
 app.get('/apnl2', (req, res) => main.getTableData2(req, res, db));
 app.get('/apnl3', (req, res) => main.getTableData3(req, res, db));
 app.get('/apnl4', (req, res) => main.getTableData4(req, res, db));
+app.get('/apnl5', (req, res) => main.getTableData5(req, res, db));
+app.get('/apnl6', (req, res) => main.getTableData6(req, res, db));
 
 
 // iteration 3 - war_iter_3

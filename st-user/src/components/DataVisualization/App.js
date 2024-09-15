@@ -266,15 +266,13 @@ const App = () => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph5`);
         //const response = await fetch('http://localhost:5000/lineGraph2');
         const data = await response.json();
-
-        
+  
         // Format the dates
         const formattedData = data.map(item5 => ({
           ...item5,
-          
           battle_date: new Date(item5.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
         }));
-
+  
         setItems5(formattedData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -282,36 +280,42 @@ const App = () => {
         setIsLoading(false);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/lineGraph6`);
-        //const response = await fetch('http://localhost:5000/lineGraph2');
         const data = await response.json();
-
-        
-        // Format the dates
-        const formattedData = data.map(item6 => ({
-          ...item6,
-          
-          battle_date: new Date(item6.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
-        }));
-
-        setItems6(formattedData);
+  
+        // Log the response to inspect the structure
+        console.log("Response from API:", data);
+  
+        // Check if data is an array before applying .map()
+        if (Array.isArray(data)) {
+          const formattedData = data.map(item6 => ({
+            ...item6,
+            battle_date: new Date(item6.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+          }));
+  
+          setItems6(formattedData);
+        } else {
+          console.error("Data is not an array:", data);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   return (
     <Container className="App">

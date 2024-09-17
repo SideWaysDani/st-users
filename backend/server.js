@@ -400,7 +400,7 @@ app.get('/api/data5', async (req, res) => {
           LEFT JOIN
               stocktrader.leads l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000_india f ON l.stock_name = f.ticker		
           order by
           	  p.battle_date asc
         `;

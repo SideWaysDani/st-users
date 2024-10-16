@@ -25,6 +25,7 @@ const main = require('../st-user/src/components/cplLineGraph/Controllers/main')
 const main3 = require('../st-user/src/components/StrengthLineGraph/Controllers/main3')
 const main4 = require('../st-user/src/components/SectorsGraph/Controllers/main4')
 const main5 = require('../st-user/src/components/CommittedStrengthLineGraph/Controllers/main5')
+const leadsmain = require('../st-user/src/components/LeadsPhasesDashboard/Controllers/leadsmain')
 // App
 const app = express();
 
@@ -71,6 +72,10 @@ app.get('/apnl4', (req, res) => main.getTableData4(req, res, db));
 app.get('/apnl5', (req, res) => main.getTableData5(req, res, db));
 app.get('/apnl6', (req, res) => main.getTableData6(req, res, db));
 
+app.get('/leads_phases', (req, res) => leadsmain.getTableData(req, res, db));
+app.get('/leads_phases/:id', (req, res) => leadsmain.getTableData2(req, res, db));
+app.put('/leads_phases/:id', (req, res) => leadsmain.getTableData3(req, res, db));
+app.delete('/leads_phases/:id', (req, res) => leadsmain.getTableData4(req, res, db));
 
 // iteration 3 - war_iter_3
 app.get('/api/dataa', async (req, res) => {

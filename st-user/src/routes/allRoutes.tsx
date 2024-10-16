@@ -146,6 +146,9 @@ import StrengthLineGRaph from "src/pages/AllCharts/StrengthLineGraph/StrengthLin
 import SectorLineGraph from "src/pages/AllCharts/SectorLineGraph/SectorLineGraph";
 import CommittedStrength from "src/pages/AllCharts/CommittedStrengthLG/CommittedStrengthLG";
 
+// Dashboard
+import PhasesDashboard from "src/pages/Dashboard/PhasesDashboard/PhaseDashboard";
+
 //Icons
 import IconUnicon from "../pages/Icons/IconUnicon";
 import Feathericons from "../pages/Icons/Feathericons";
@@ -277,6 +280,10 @@ const userRoutes: Array<RouteProps> = [
   { path: "/data-vizualization-4", component: <StrengthLineGRaph />},
   { path: "/data-vizualization-5", component: <SectorLineGraph />},
   { path: "/data-vizualization-6", component: <CommittedStrength />},
+
+  // Dashboard
+  { path: "/phases-dashboard", component: <PhasesDashboard />},
+
 
   //Icons
   { path: "/icons-boxicons", component: <IconBoxicons/> },

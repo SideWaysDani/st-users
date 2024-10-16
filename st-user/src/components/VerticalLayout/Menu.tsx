@@ -989,9 +989,14 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/data-vizualization-5",
                 parentId: 144
             },
-            
-            
         ]
+    },
+    {
+        "id": 151,
+        "novidade": false,
+        "label": "Leads Phases Dashboard",
+        "icon": "monitor",
+        "link": "/phases-dashboard",
     },
 ];
 

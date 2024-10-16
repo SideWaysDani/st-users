@@ -23,7 +23,7 @@ const Modal = ({ id, onClose }) => {
 
   // Handle updating the record
   const handleUpdate = () => {
-    fetch(`http://localhost:5000/leads_phases/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/leads_phases/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Modal = ({ id, onClose }) => {
 
   // Handle deleting the record
   const handleDelete = () => {
-    fetch(`http://localhost:5000/leads_phases/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/leads_phases/${id}`, {
       method: 'DELETE',
     })
       .then(() => {

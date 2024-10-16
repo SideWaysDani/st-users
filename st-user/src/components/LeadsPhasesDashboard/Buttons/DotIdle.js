@@ -12,16 +12,31 @@ const DotIdle = ({ handleClosePopup }) => {
     }, []);
 
     // Define handleEdit function
-    const handleEdit = (id) => {
-        // You can navigate to an edit form or display inline editing
-        console.log('Editing row with ID:', id);
-        // Implement your edit logic here, like sending the data to an edit endpoint
+    const handleEdit = (id, updatedData) => {
+        // Call your API to update the row by its ID
+        fetch(`${process.env.REACT_APP_API_URL}/leads_phases/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData), // Send updated data in the request body
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Row updated:', data);
+                // After the update, update the table data to reflect the changes
+                setTableData((prevData) =>
+                    prevData.map((row) => (row.id === id ? { ...row, ...updatedData } : row))
+                );
+            })
+            .catch((error) => console.error('Error updating row:', error));
     };
+    
 
     // Define handleDelete function
     const handleDelete = (id) => {
         // Call your API to delete the row by its ID
-        fetch(`${process.env.REACT_APP_API_URL}/idle_table/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/leads_phases/${id}`, {
             method: 'DELETE',
         })
             .then((response) => response.json())

@@ -42,7 +42,7 @@ const DotBuy = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         {/* <th>Date</th> */}
                         <th>Buy Phase</th>
                         <th>Actions</th>

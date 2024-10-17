@@ -42,7 +42,7 @@ const DotMaxAltitude = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         <th>Max Altitude</th>
                         <th>Actions</th>
                     </tr>

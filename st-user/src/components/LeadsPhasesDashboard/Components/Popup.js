@@ -8,7 +8,7 @@ const TablePopup = ({ data, onClose }) => {
     try {
       await axios.delete(`/leads_phases/${id}`);
       alert('Deleted successfully');
-      window.location.reload(); // Reload to fetch updated data
+      window.location.reload();   // Reload to fetch updated data 
     } catch (error) {
       console.error('Error deleting record:', error);
     }

@@ -57,7 +57,7 @@ const DotIdle = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         <th>Date</th>
                         <th>Actions</th>
                     </tr>

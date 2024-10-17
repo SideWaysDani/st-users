@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import './Dashboard.css';
 import DotIdle from './Buttons/DotIdle';
 import DotBuy from './Buttons/DotBuy';
@@ -11,17 +12,25 @@ import DotMustSell from './Buttons/DotMustSell';
 const Dashboard = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [currentDot, setCurrentDot] = useState(null);
+    const dashboardRef = useRef(null);
 
-    // Define handleClosePopup
     const handleClosePopup = () => {
         setShowPopup(false);
-        setCurrentDot(null); // Reset the current dot when closing
+        setCurrentDot(null);
     };
+
+    useEffect(() => {
+        const sections = dashboardRef.current.querySelectorAll('.section');
+        gsap.fromTo(sections, 
+            { x: -100, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.inOut' }
+        );
+    }, []);
 
     return (
         <div className="dashboard-container">
             <div className="dashboard-wrapper">
-                <div className="dashboard">
+                <div className="dashboard" ref={dashboardRef}>
                     <div className="section idle" onClick={() => { setShowPopup(true); setCurrentDot('idle'); }}>
                         <span>Idle</span>
                         <div className="dot"></div>
@@ -57,18 +66,23 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* Popup Display */}
+            {/* Popup Overlay */}
             {showPopup && (
-                <div className="popup-overlay">
-                    {/* Check which dot was clicked and render the respective component */}
-                    {currentDot === 'idle' && <DotIdle handleClosePopup={handleClosePopup} />}
-                    {currentDot === 'buy' && <DotBuy handleClosePopup={handleClosePopup} />}
-                    {currentDot === 'sellExpecting' && <DotSellExpected handleClosePopup={handleClosePopup}/>}
-                    {currentDot === 'afterburn' && <DotMaxAltitude handleClosePopup={handleClosePopup}/>}
-                    {currentDot === 'maxAltitude' && <DotMaxAltitude handleClosePopup={handleClosePopup}/>}
-                    {currentDot === 'goodSell' && <DotGoodSell handleClosePopup={handleClosePopup}/>}
-                    {currentDot === 'lateSell' && <DotLateSell handleClosePopup={handleClosePopup}/>}
-                    {currentDot === 'mustSell' && <DotMustSell handleClosePopup={handleClosePopup}/>}
+                <div className="popup-overlay" onClick={handleClosePopup}>
+                    <div className="popup-box" onClick={(e) => e.stopPropagation()}>
+                        {/* Rendering respective dot content */}
+                        {currentDot === 'idle' && <DotIdle handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'buy' && <DotBuy handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'sellExpecting' && <DotSellExpected handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'afterburn' && <DotMaxAltitude handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'maxAltitude' && <DotMaxAltitude handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'goodSell' && <DotGoodSell handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'lateSell' && <DotLateSell handleClosePopup={handleClosePopup} />}
+                        {currentDot === 'mustSell' && <DotMustSell handleClosePopup={handleClosePopup} />}
+
+                        {/* Close Button inside the popup */}
+                        {/* <button className="close-button" onClick={handleClosePopup}>Close</button> */}
+                    </div>
                 </div>
             )}
         </div>

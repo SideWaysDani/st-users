@@ -42,7 +42,7 @@ const DotLateSell = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         <th>Sell Yellow Phase</th>
                         <th>Actions</th>
                     </tr>

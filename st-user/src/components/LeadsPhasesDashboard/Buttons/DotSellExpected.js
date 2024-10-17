@@ -42,7 +42,7 @@ const DotSellExpected = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         <th>Sell Expected Phase</th>
                         <th>Actions</th>
                     </tr>

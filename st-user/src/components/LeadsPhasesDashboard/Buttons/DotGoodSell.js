@@ -42,7 +42,7 @@ const DotGoodSell = ({ handleClosePopup }) => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Idle Name</th>
+                        <th>Stock Name</th>
                         <th>Sell Green Phase</th>
                         <th>Actions</th>
                     </tr>

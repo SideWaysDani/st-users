@@ -3,103 +3,150 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden; /* Ensure the content stays within the viewport */
+  position: relative;
 }
 
-.dashboard-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  padding: 20px;
+.slider-wrapper {
+  width: 80%;
+  overflow: hidden;
+  position: relative;
 }
 
-.dashboard {
+.slider {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  scroll-snap-type: x mandatory; /* Enable snap scrolling */
+  transition: transform 0.5s ease;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-  width: 12.5%;
-  position: relative;
+  min-width: 200px;
+  margin: 0 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding-top: 20px;
-  scroll-snap-align: center; /* Snap each section into view */
-  transition: transform 0.3s ease; /* Smooth transition for slider effect */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  height: 300px; /* Increased height */
+}
+
+/* Color assignments to sections */
+.section.idle {
+  background-color: #d4f8e8;
+}
+
+.section.buy {
+  background-color: #f5fdd0;
+}
+
+.section.sellExpecting {
+  background-color: #fdd0d0;
+}
+
+.section.afterburn {
+  background-color: #d0f4fd;
+}
+
+.section.maxAltitude {
+  background-color: #e6e6e6;
+}
+
+.section.goodSell {
+  background-color: #fff2cc;
+}
+
+.section.lateSell {
+  background-color: #f4e0c6;
+}
+
+.section.mustSell {
+  background-color: #ffd0d0;
 }
 
 .section:hover {
-  transform: scale(1.1); /* Slight scale effect on hover */
+  transform: scale(1.05);
 }
 
-.dot {
-  width: 30px;
-  height: 30px;
-  background-color: red;
-  border-radius: 50%;
-  margin-top: 20px;
-}
-
-.section span {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* Background colors for each section */
-.idle { background-color: #d4f8e8; }
-.buy { background-color: #f5fdd0; }
-.sell-expecting { background-color: #fdd0d0; }
-.afterburn { background-color: #d0f4fd; }
-.max-altitude { background-color: #e6e6e6; }
-.good-sell { background-color: #fff2cc; }
-.late-sell { background-color: #f4e0c6; }
-.must-sell { background-color: #ffd0d0; }
-
-
+/* Popup overlay */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
 }
 
+/* Popup box with proper scrolling */
 .popup-box {
-  position: relative;
-  width: 60%; /* Adjust the width as needed */
-  max-height: 80%; /* Ensure popup doesn't exceed screen height */
+  width: 600px;
+  max-height: 80vh;
   background-color: white;
   padding: 20px;
-  overflow-y: auto; /* Make popup scrollable */
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-y: auto; /* Ensures that only content inside scrolls */
+  position: relative; /* Important for positioning the close button */
 }
 
+/* Single scroll bar */
+.popup-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup-box::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Close button styling */
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   background-color: red;
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+}
+
+/* Navigation Buttons with Arrow Images */
+.prev-button, .next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.prev-button img, .next-button img {
+  width: 30px;
+  height: auto;
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
+.prev-button:disabled, .next-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Dot inside each card */
+.dot {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  margin-top: 20px;
+  cursor: pointer;
 }

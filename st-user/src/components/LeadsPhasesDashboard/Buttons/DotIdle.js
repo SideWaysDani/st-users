@@ -82,3 +82,5 @@ const DotIdle = ({ handleClosePopup }) => {
 
 export default DotIdle;
  
+
+

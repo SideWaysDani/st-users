@@ -1,4 +1,4 @@
-.dashboard-container {
+/* /* /* .dashboard-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,4 +149,74 @@
   border-radius: 50%;
   margin-top: 20px;
   cursor: pointer;
+} */
+ */
+ */
+ 
+ .dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.slider-wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 600px; /* Adjust to match desired height */
+}
+
+/* Define specific grid areas for the triangular layout */
+.section.idle { grid-column: 1; grid-row: 2; background-color: #d4f8e8; }
+.section.buy { grid-column: 2; grid-row: 2; background-color: #f5fdd0; }
+.section.sellExpecting { grid-column: 3; grid-row: 2; background-color: #fdd0d0; }
+.section.afterburn { grid-column: 4; grid-row: 2; background-color: #d0f4fd; }
+.section.maxAltitude { grid-column: 5; grid-row: 1; background-color: #e6e6e6; }
+.section.goodSell { grid-column: 6; grid-row: 2; background-color: #fff2cc; }
+.section.lateSell { grid-column: 7; grid-row: 2; background-color: #f4e0c6; }
+.section.mustSell { grid-column: 8; grid-row: 2; background-color: #ffd0d0; }
+
+.section:hover {
+  transform: scale(1.05);
+}
+
+.dot {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .pyramid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+  }
 }

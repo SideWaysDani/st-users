@@ -1,58 +1,35 @@
-/* Close button styling */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .close-button:hover {
-    color: red;
-  }
-  
-  /* Existing styles */
-  .pyramid-container {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 5px;
+.pyramid-container {
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom line */
+    gap: 0px;
     padding: 20px;
-  }
-  
-  .pyramid-section {
+    background-color: #F1F1F1
+}
+
+.pyramid-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 500px;
-    border: 1px dashed lightgray;
-    background-color: rgba(0, 0, 0, 0.05);
+    justify-content: flex-end; /* Ensure image and label align to the bottom */
     position: relative;
-  }
-  
-  .section-0 { background-color: #e8f5e9; }
-  .section-1 { background-color: #c8e6c9; }
-  .section-2 { background-color: #ffe0b2; }
-  .section-3 { background-color: #ffccbc; }
-  .section-4 { background-color: #bbdefb; }
-  .section-5 { background-color: #d1c4e9; }
-  .section-6 { background-color: #ffecb3; }
-  .section-7 { background-color: #ffcdd2; }
-  
-  /* Dot styling */
-  .dot {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  /* Popup overlay and box */
-  .popup-overlay {
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.section-name {
+    margin-top: 8px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -62,9 +39,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .popup-box {
+}
+
+.popup-box {
     width: 400px;
     max-height: 70vh;
     background-color: white;
@@ -72,5 +49,14 @@
     border-radius: 8px;
     overflow-y: auto;
     position: relative;
-  }
-  
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}

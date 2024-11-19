@@ -35,9 +35,9 @@ const DotAfterBurn = ({ handleClosePopup }) => {
 
     return (
         <div className="popup-box">
-            <button className="close-button" onClick={handleClosePopup}>
+            {/* <button className="close-button" onClick={handleClosePopup}>
                 X
-            </button>
+            </button> */}
             <table>
                 <thead>
                     <tr>

@@ -81,8 +81,8 @@
 
 /* Popup box with proper scrolling */
 .popup-box {
-  width: 600px;
-  max-height: 80vh;
+  width: 400px;
+  max-height: 450px;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -219,4 +219,32 @@
   .header {
     flex-direction: column;
   }
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.header {
+  width: 100%;
+  height: 10%; /* Adjust header height */
+}
+
+.footer {
+  width: 100%;
+  height: 10%; /* Adjust footer height */
+}
+
+.pyramid-section {
+  display: flex;
+  justify-content: space-between; /* Spread components evenly */
+  align-items: center; /* Align components vertically */
+  width: 100%;
+  height: 80%; /* Use the remaining height for the PyramidSection */
+  overflow-x: auto; /* Enable horizontal scroll for small screens */
+  gap: 10px; /* Space between components */
 }

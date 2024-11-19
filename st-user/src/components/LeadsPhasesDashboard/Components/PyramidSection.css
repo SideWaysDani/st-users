@@ -12,6 +12,14 @@
     align-items: center;
     justify-content: flex-end; /* Ensure image and label align to the bottom */
     position: relative;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .pyramid-section {
+        gap: 2px; /* Reduce gap on smaller screens */
+    }
 }
 
 .section-image {
@@ -60,3 +68,6 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+
+

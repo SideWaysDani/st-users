@@ -1,0 +1,198 @@
+/* Container for the entire section */
+.late-sell-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 435px;
+    background-color: transparent;
+    border: 0px solid #d4d4d4;
+}
+
+@media (max-width: 768px) {
+    .late-sell-section {
+        width: 60px;
+        height: 320px; /* Adjust height dynamically */
+    }
+}
+
+@media (max-width: 480px) {
+    .late-sell-section {
+        width: 40px;
+        height: 220px; /* Adjust height dynamically */
+    }
+}
+
+/* Sloped area under the dotted line with a yellow background */
+.late-sell-shaded-area {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 418px;
+    background: rgba(255, 255, 0, 0.2); /* Light yellow shade */
+    clip-path: polygon(0 100%, 0 0, 100% 18%, 100% 100%);
+    border-left: 1px dashed #cccccc;
+}
+
+@media (max-width: 768px) {
+    .late-sell-shaded-area {
+        height: 305px;
+    }
+}
+
+@media (max-width: 480px) {
+    .late-sell-shaded-area {
+        height: 205px;
+    }
+}
+
+/* Dotted line with a sloped orientation */
+.late-sloped-line {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-top: 2px dashed #00aaff;
+    transform: rotate(25deg); /* Adjust angle for the Late Sell slope */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .late-sloped-line {
+        top: 40px;
+        transform: rotate(40deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .late-sloped-line {
+        top: 35px;
+        transform: rotate(40deg);
+    }
+}
+
+/* Orange dots */
+.orange-dot {
+    width: 15px;
+    height: 15px;
+    background-color: #ff7f50;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.orange-dot-top {
+    top: 100px;
+    left: 20px;
+}
+
+.orange-dot-bottom {
+    top: 160px;
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .orange-dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .orange-dot-top {
+        top: 80px;
+        left: 15px;
+    }
+
+    .orange-dot-bottom {
+        top: 140px;
+        right: 15px;
+    }
+}
+
+/* Middle red dot for popup trigger */
+.red-dot {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .red-dot {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* Section label */
+.section-label {
+    margin-top: auto;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #7b7b7b;
+}
+
+@media (max-width: 768px) {
+    .section-label {
+        font-size: 14px;
+    }
+}
+
+/* Bottom boxes */
+.bottom-boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.lsell-box {
+    width: 20px;
+    height: 20px;
+    background-color: #fff646; /* Light yellow color for bottom boxes */
+}
+
+@media (max-width: 768px) {
+    .lsell-box {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* Popup styling - center of the screen */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    height: 530px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+@media (max-width: 768px) {
+    .popup {
+        width: 90%;
+        height: 450px;
+        padding: 15px;
+    }
+}
+
+.popup button {
+    margin-top: 10px;
+}

@@ -35,9 +35,7 @@ const DotGoodSell = ({ handleClosePopup }) => {
 
     return (
         <div className="popup-box">
-            <button className="close-button" onClick={handleClosePopup}>
-                X
-            </button>
+
             <table>
                 <thead>
                     <tr>

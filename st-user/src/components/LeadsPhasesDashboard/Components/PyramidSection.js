@@ -26,6 +26,14 @@ import DotMaxAltitude from '../Buttons/DotMaxAltitude';
 import DotGoodSell from '../Buttons/DotGoodSell';
 import DotLateSell from '../Buttons/DotLateSell';
 import DotMustSell from '../Buttons/DotMustSell';
+import IdleSection from '../Sections/IdleSection';
+import BuySection from '../Sections/BuySection';
+import SellExpectingSection from '../Sections/SellExpectingSection';
+import AfterburnSection from '../Sections/AfterburnSection';
+import MaxAltitudeSection from '../Sections/MaxAltitudeSection';
+import GoodSellSection from '../Sections/GoodSellSection';
+import LateSellSection from '../Sections/LateSellSection';
+import MustSellSection from '../Sections/MustSellSection';
 
 // Array of sections with their corresponding components and image file paths
 const sections = [
@@ -54,6 +62,15 @@ function PyramidSection() {
 
     return (
         <div className="pyramid-container">
+            <IdleSection/>
+            <BuySection/>
+            <SellExpectingSection/>
+            <AfterburnSection/>
+            <MaxAltitudeSection/>
+            <GoodSellSection/>
+            <LateSellSection/>
+            <MustSellSection/>
+{/*             
             {sections.map((section, index) => (
                 <div
                     key={index}
@@ -72,7 +89,7 @@ function PyramidSection() {
                         {currentSection && currentSection.component}
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

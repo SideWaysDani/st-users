@@ -88,7 +88,7 @@ const getTableData2 = (req, res, db) => {
   db
     .select('battle_date')
     .sum('percentageprofitandloss as cumulative_percentageprofitandloss')
-    .from('war_iter_3.performance')
+    .from('paper_trading_test.performance')
     .groupBy('battle_date')
     .orderBy('battle_date', 'asc')
     .then(items2 => {

@@ -77,7 +77,7 @@ app.get('/leads_phases/:id', (req, res) => leadsmain.getTableData2(req, res, db)
 app.put('/leads_phases/:id', (req, res) => leadsmain.getTableData3(req, res, db));
 app.delete('/leads_phases/:id', (req, res) => leadsmain.getTableData4(req, res, db));
 
-// Peper Trading - paper_trading_test
+// Paper Trading - paper_trading_test
 app.get('/api/dataa', async (req, res) => {
     try {
         const query = `

@@ -374,7 +374,7 @@ const App = () => {
           <LineGraph data={items5} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Iteration 5 - war_iter_5</h1>
           <LineGraph data={items6} /> {/* Pass data as props to LineChart */}
-          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Peper Trading - paper_trading_test</h1>
+          <h1 style={{ margin: '20px 0' }}>Actual Profit and Loss - Paper Trading - paper_trading_test</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
           
         </Col>

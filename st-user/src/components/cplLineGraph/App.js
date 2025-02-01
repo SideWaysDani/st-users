@@ -165,7 +165,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  // iteration 3
+  // Paper Trading
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -353,7 +353,7 @@ const App = () => {
           <LineGraph data={items5} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 5 - war_iter_5</h1>
           <LineGraph data={items6} /> {/* Pass data as props to LineChart */}
-          <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 3 - war_iter_3</h1>
+          <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Paper Trading - paper_trading_test</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
         </Col>
       </Row>

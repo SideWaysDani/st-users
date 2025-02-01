@@ -77,7 +77,7 @@ app.get('/leads_phases/:id', (req, res) => leadsmain.getTableData2(req, res, db)
 app.put('/leads_phases/:id', (req, res) => leadsmain.getTableData3(req, res, db));
 app.delete('/leads_phases/:id', (req, res) => leadsmain.getTableData4(req, res, db));
 
-// iteration 3 - war_iter_3
+// Paper Trading - paper_trading_test
 app.get('/api/dataa', async (req, res) => {
     try {
         const query = `
@@ -95,11 +95,11 @@ app.get('/api/dataa', async (req, res) => {
               f.ticker,
               f.sector
           FROM
-              war_iter_3.performance p
+              paper_trading_test.performance p
           LEFT JOIN
-              war_iter_3.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+              paper_trading_test.deployment d ON p.unit_assignment_id = d.unit_assignment_id
           LEFT JOIN
-              war_iter_3.allocation a ON d.deployment_id = a.deployment_id
+              paper_trading_test.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
               stocktrader.leads l on p.lead_id = l.id
           LEFT JOIN

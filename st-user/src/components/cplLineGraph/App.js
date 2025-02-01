@@ -297,7 +297,7 @@ const App = () => {
 
 
   return (
-    <Container className="App">
+    <Container className="App" style={{ marginBottom: '100px' }}>
       <Row>
         <Col>
         <h1>graphss</h1>

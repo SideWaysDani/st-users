@@ -177,7 +177,7 @@ const App = () => {
 
 
   return (
-    <Container className="App">
+    <Container className="App" style={{ marginBottom: '100px' }}>
       <Row>
         <Col>
         <h1 style={{ margin: '20px 0' }}>Total Strength - Iteration 2 - war_clone_test</h1>

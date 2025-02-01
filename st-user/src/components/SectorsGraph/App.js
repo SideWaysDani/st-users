@@ -124,7 +124,7 @@ const App = () => {
     
 
     return (
-        <Container className="App">
+        <Container className="App" style={{ marginBottom: '100px' }}>
             <Row>
                 <Col>
                 <br/><br/><br/>

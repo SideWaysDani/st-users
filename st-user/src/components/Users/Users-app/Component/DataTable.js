@@ -47,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <>
-      <Container className="App">
+      <Container className="App" style={{ marginBottom: '100px' }}>
         <Row>
           <Col>
             <h1 style={{margin: "20px 0"}}>CRUD Database</h1>

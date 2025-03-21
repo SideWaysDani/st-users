@@ -1,0 +1,259 @@
+/* Container for the entire section */
+.good-sell-section-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 375px;
+    background-color: transparent;
+    border: 0px solid #d4d4d4;
+}
+
+@media (max-width: 768px) {
+    .good-sell-section {
+        width: 70px;
+        height: 370px;
+    }
+}
+
+@media (max-width: 480px) {
+    .good-sell-section {
+        width: 40px;
+        height: 250px;
+    }
+}
+
+/* Sloped area under the dotted line with reversed slope */
+.good-sell-shaded-area-new {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 365px;
+    background: rgba(255, 255, 0, 0.2); /* Light yellow shade */
+    clip-path: polygon(0 100%, 0 0, 100% 50%, 100% 100%);
+    border-left: 1px dashed #cccccc;
+}
+
+@media (max-width: 768px) {
+    .good-sell-shaded-area {
+        height: 362px;
+        width: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .good-sell-shaded-area {
+        height: 240px;
+        width: 40px;
+    }
+}
+
+/* Dotted line with dots */
+.good-sloped-line-new {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-top: 2px dashed #00aaff;
+    transform: rotate(30deg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .good-sloped-line {
+        top: 40px;
+        transform: rotate(40deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .good-sloped-line {
+        top: 30px;
+        transform: rotate(45deg);
+    }
+}
+
+/* Orange dots */
+.orange-dot {
+    width: 15px;
+    height: 15px;
+    background-color: #9284fc;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.orange-dot-top {
+    top: 100px;
+    left: 20px;
+}
+
+.orange-dot-bottom {
+    top: 160px;
+    left: 50px;
+}
+
+@media (max-width: 768px) {
+    .orange-dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .orange-dot-top {
+        top: 80px;
+        left: 15px;
+    }
+
+    .orange-dot-bottom {
+        top: 140px;
+        left: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orange-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .orange-dot-top {
+        top: 60px;
+        left: 10px;
+    }
+
+    .orange-dot-bottom {
+        top: 120px;
+        left: 30px;
+    }
+}
+
+/* Middle red dot for popup trigger */
+.red-dot {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .red-dot {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .red-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Section label */
+.section-label {
+    margin-top: auto;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #7b7b7b;
+}
+
+@media (max-width: 768px) {
+    .section-label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-label {
+        font-size: 10px;
+    }
+}
+
+/* Bottom boxes */
+.bottom-boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.gsell-box {
+    width: 20px;
+    height: 20px;
+    background-color: #bd30ec;
+}
+
+@media (max-width: 768px) {
+    .gsell-box {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gsell-box {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Popup styling - center of the screen */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        padding: 15px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+.popup button {
+    margin-top: 10px;
+}
+
+/* Text slider container (placed below red dot) */
+.sell-text-slider {
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+    top: 200px;
+    background-color: #fff;
+}
+
+/* Style for the text inside the slider */
+.slider-text {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+}

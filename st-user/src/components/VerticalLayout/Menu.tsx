@@ -998,6 +998,13 @@ const menuItems: Array<MenuItemsProps> = [
         "icon": "monitor",
         "link": "/phases-dashboard",
     },
+    {
+        "id": 152,
+        "novidade": false,
+        "label": "Leads Phases Dashboard New",
+        "icon": "monitor",
+        "link": "/phases-dashboard-new",
+    },
 ];
 
 export { menuItems };

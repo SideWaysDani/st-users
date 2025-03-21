@@ -1,0 +1,236 @@
+/* Container for the entire section */
+.buy-section-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background-color: transparent;
+    border-left: 0px dashed #00aaff;
+}
+
+@media (max-width: 768px) {
+    .buy-section {
+        width: 80px;
+        height: 270px;
+    }
+}
+
+@media (max-width: 480px) {
+    .buy-section {
+        width: 60px;
+        height: 190px;
+    }
+}
+
+/* Shaded area under the dotted line */
+.buy-shaded-area-new {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 100%;
+    height: 365px;
+    background: rgba(43, 239, 9, 0.2); /* Light green shade */
+    clip-path: polygon(0 100%, 0 60%, 100% 0, 100% 100%);
+    border-left: 1px dashed #cccccc;
+}
+
+@media (max-width: 768px) {
+    .buy-shaded-area {
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .buy-shaded-area {
+        height: 155px;
+    }
+}
+
+/* Dotted sloped line */
+.buy-sloped-line-new {
+    position: absolute;
+    top: 142px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-top: 2px dashed #00aaff;
+    transform: rotate(146deg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .buy-sloped-line {
+        top: 45px;
+        transform: rotate(330deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .buy-sloped-line {
+        top: 40px;
+    }
+}
+
+/* Dots on the ends of the dotted line */
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: #00aaff;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .dot {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dot {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+/* Red dot in the middle to trigger popup */
+.red-dot {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .red-dot {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .red-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Ensure red dot is centered */
+.red-dot {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 10px; /* Adjust space below the red dot */
+}
+
+/* Section label */
+.section-label {
+    margin-top: auto;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #7b7b7b;
+}
+
+@media (max-width: 768px) {
+    .section-label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-label {
+        font-size: 10px;
+    }
+}
+
+/* Bottom boxes */
+.bottom-boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.box {
+    width: 20px;
+    height: 20px;
+    background-color: #b4ec51; /* Light green */
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Popup styling - center of the screen */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        padding: 15px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+.popup button {
+    margin-top: 10px;
+}
+
+.buy-text-slider {
+    width: 100%;
+    max-width: 150px;
+    position: relative;
+    top: 210px;
+    background-color: #fff;
+}
+
+/* Style for the text inside the slider */
+.slider-text {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+}

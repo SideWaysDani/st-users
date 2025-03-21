@@ -1,0 +1,282 @@
+/* Container for the entire section */
+.max-altitude-section-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 500px;
+    background-color: transparent;
+    border: 0px solid #e3d4d4;
+}
+
+@media (max-width: 768px) {
+    .max-altitude-section {
+        width: 100px;
+        height: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .max-altitude-section {
+        width: 80px;
+        height: 290px;
+    }
+}
+
+/* Pointy Top with pink shading */
+.pointy-top-shaded-new {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 135px;
+    background: rgba(34, 191, 234, 0.2);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@media (max-width: 768px) {
+    .pointy-top-shaded {
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pointy-top-shaded {
+        height: 50px;
+    }
+}
+
+/* Adding dashed border only on the top two sides */
+.pointy-top-shaded:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-top: 2px dashed #00aaff;
+    border-left: 2px dashed #00aaff;
+    border-right: 2px dashed #00aaff;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+/* Top dashed line */
+.top-dashed-line-new {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 0;
+    border-top: 0px dashed #b34f4f;
+}
+
+@media (max-width: 768px) {
+    .top-dashed-line {
+        top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-dashed-line {
+        top: 50px;
+    }
+}
+
+/* Middle dashed line */
+.middle-dashed-line-new {
+    position: absolute;
+    top: 180px;
+    width: 100%;
+    height: 0;
+    border-top: 0px dashed #00ff00;
+}
+
+@media (max-width: 768px) {
+    .middle-dashed-line {
+        top: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .middle-dashed-line {
+        top: 120px;
+    }
+}
+
+/* Bottom dashed line */
+.bottom-dashed-line-new {
+    position: absolute;
+    top: 280px;
+    width: 100%;
+    height: 0;
+    border-top: 0px dashed #00ff00;
+}
+
+@media (max-width: 768px) {
+    .bottom-dashed-line {
+        top: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bottom-dashed-line {
+        top: 180px;
+    }
+}
+
+/* Orange dot and label container */
+.label-dot-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Orange dot */
+.orange-dot {
+    width: 15px;
+    height: 15px;
+    background-color: #ff7f50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .orange-dot {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .orange-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Label text */
+.label-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #7b7b7b;
+}
+
+@media (max-width: 768px) {
+    .label-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .label-text {
+        font-size: 10px;
+    }
+}
+
+/* Section label at the bottom */
+.section-label {
+    margin-top: auto;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #7b7b7b;
+}
+
+@media (max-width: 768px) {
+    .section-label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-label {
+        font-size: 12px;
+    }
+}
+
+/* Bottom boxes */
+.bottom-boxes {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .bottom-boxes {
+        width: 50%;
+        padding: 5px 0;
+    }
+}
+
+.max-altitude-box {
+    width: 20px;
+    height: 20px;
+    background-color: #00aaff;
+}
+
+@media (max-width: 768px) {
+    .max-altitude-box {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .max-altitude-box {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Popup styling - center of the screen */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        padding: 15px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+.popup button {
+    margin-top: 10px;
+}
+
+.altitude-text-slider {
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+    top: 200px;
+    background-color: #fff;
+}
+
+/* Style for the text inside the slider */
+.slider-text {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+}

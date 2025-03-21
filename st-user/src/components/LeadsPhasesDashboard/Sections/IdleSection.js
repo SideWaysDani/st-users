@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import './IdleSection.css';
-import DotIdle from '../Buttons/DotIdle'; 
+import DotIdle from '../Buttons/DotIdle';
 
 const IdleSection = () => {
     const [showPopup, setShowPopup] = useState(false);
@@ -11,12 +16,10 @@ const IdleSection = () => {
 
     return (
         <div className="idle-section">
+
             {/* Sloped area with shaded color and dotted line */}
             <div className="idle-shaded-area"></div>
-            <div className="idle-sloped-line">
-                {/* <span className="dot start-dot"></span>
-                <span className="dot end-dot"></span> */}
-            </div>
+            <div className="idle-sloped-line"></div>
 
             {/* Middle red dot that opens the DotIdle component as popup */}
             <span className="red-dot" onClick={togglePopup}></span>
@@ -34,7 +37,7 @@ const IdleSection = () => {
             {/* DotIdle Component Popup */}
             {showPopup && (
                 <div className="popup">
-                    <DotIdle /> {/* This will display DotIdle component */}
+                    <DotIdle />
                     <button onClick={togglePopup}>Close</button>
                 </div>
             )}

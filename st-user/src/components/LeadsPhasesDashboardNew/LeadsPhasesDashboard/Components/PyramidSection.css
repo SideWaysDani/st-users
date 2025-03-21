@@ -1,0 +1,73 @@
+.pyramid-container {
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom line */
+    gap: 0px;
+    padding: 20px;
+    background-color: #F1F1F1
+}
+
+.pyramid-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Ensure image and label align to the bottom */
+    position: relative;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .pyramid-section {
+        gap: 2px; /* Reduce gap on smaller screens */
+    }
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.section-name {
+    margin-top: 8px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    width: 400px;
+    max-height: 70vh;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+

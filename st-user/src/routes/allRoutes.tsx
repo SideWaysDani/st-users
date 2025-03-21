@@ -148,6 +148,7 @@ import CommittedStrength from "src/pages/AllCharts/CommittedStrengthLG/Committed
 
 // Dashboard
 import PhasesDashboard from "src/pages/Dashboard/PhasesDashboard/PhaseDashboard";
+import PhasesDashboardNew from "src/pages/Dashboard/PhasesDashboardNew/PhasesDashboardNew";
 
 //Icons
 import IconUnicon from "../pages/Icons/IconUnicon";
@@ -283,7 +284,7 @@ const userRoutes: Array<RouteProps> = [
 
   // Dashboard
   { path: "/phases-dashboard", component: <PhasesDashboard />},
-
+  { path: "/phases-dashboard-new", component: <PhasesDashboardNew />},
 
   //Icons
   { path: "/icons-boxicons", component: <IconBoxicons/> },

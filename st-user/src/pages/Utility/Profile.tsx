@@ -14,12 +14,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SimpleBar from "simplebar-react";
 import { Link } from 'react-router-dom';
 
-import SwiperCore, {
-    Autoplay, Pagination, Navigation, Keyboard, EffectFlip
-} from 'swiper/core';
+import { Autoplay, Pagination, Navigation, Keyboard, EffectFlip } from 'swiper/modules';
 
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-flip";
 
 import img9 from "../../assets/images/small/img-9.jpg";
 import img2 from "../../assets/images/small/img-2.jpg";
@@ -29,11 +29,8 @@ import avatar1 from "../../assets/images/users/avatar-1.jpg";
 import avatar2 from "../../assets/images/users/avatar-2.jpg";
 import avatar3 from "../../assets/images/users/avatar-3.jpg";
 import avatar4 from "../../assets/images/users/avatar-4.jpg";
-import avatar5 from "../../assets/images/users/avatar-5.jpg";
 
-SwiperCore.use([Autoplay, Pagination, Navigation, Keyboard, EffectFlip]);
-
-document.title = "Profle | Dashonic - React Admin & Dashboard Template";
+document.title = "Profile | Dashonic - React Admin & Dashboard Template";
 
 const Profile = () => {
     return (
@@ -79,19 +76,18 @@ const Profile = () => {
                                     </div>
                                     <h5 className="mb-1">Katie Sharpe</h5>
                                     <p className="text-muted">Full Stack Developer</p>
-
-                                    <div><i className="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span className="align-middle">Balance : <b className="fw-semibold font-size-16">$6951.02</b></span></div>
+                                    <div>
+                                        <i className="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i>
+                                        <span className="align-middle">Balance : <b className="fw-semibold font-size-16">$6951.02</b></span>
+                                    </div>
                                 </CardBody>
                                 <div className="d-flex border-top p-2">
-                                    <div className="flex-grow-1">
-                                        <div className="p-2 ps-3">$40/-hr</div>
-                                    </div>
+                                    <div className="flex-grow-1 p-2 ps-3">$40/-hr</div>
                                     <div className="flex-shrink-0">
                                         <button type="button" className="btn btn-light"><i className="uil uil-envelope-alt me-1"></i> Message</button>
                                     </div>
                                 </div>
                             </Card>
-
 
                             <Card>
                                 <CardBody>
@@ -107,7 +103,6 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         </li>
-
                                         <li className="py-3">
                                             <div className="d-flex align-items-center">
                                                 <div className="font-size-20 text-primary flex-shrink-0 me-3">
@@ -119,7 +114,6 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         </li>
-
                                         <li className="py-3">
                                             <div className="d-flex align-items-center">
                                                 <div className="font-size-20 text-primary flex-shrink-0 me-3">
@@ -131,7 +125,6 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         </li>
-
                                         <li className="pt-3">
                                             <div className="d-flex align-items-center">
                                                 <div className="font-size-20 text-primary flex-shrink-0 me-3">
@@ -143,7 +136,6 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         </li>
-
                                     </ul>
                                 </CardBody>
                             </Card>
@@ -205,8 +197,7 @@ const Profile = () => {
                                         <Card>
                                             <CardBody>
                                                 <h5 className="card-title mb-4">About</h5>
-
-                                                <p>Hi I&apos;m Katie, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
+                                                <p>Hi I'm Katie, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
                                                 <p className="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at it has a more-or-less normal distribution of letters</p>
                                             </CardBody>
                                         </Card>
@@ -237,7 +228,6 @@ const Profile = () => {
                                                             <SwiperSlide>
                                                                 <div className="event-list pb-2">
                                                                     <p className="font-size-13 text-primary">2018 - 20</p>
-
                                                                     <h5 className="font-size-14 mb-1">Full Stack Developer</h5>
                                                                     <p className="text-muted mb-0">ABC Company</p>
                                                                 </div>
@@ -245,7 +235,6 @@ const Profile = () => {
                                                             <SwiperSlide>
                                                                 <div className="event-list pb-2">
                                                                     <p className="font-size-13 text-primary">2017 - 18</p>
-
                                                                     <h5 className="font-size-14 mb-1">Backend Developer</h5>
                                                                     <p className="text-muted mb-0">XYZ Company</p>
                                                                 </div>
@@ -253,7 +242,6 @@ const Profile = () => {
                                                             <SwiperSlide>
                                                                 <div className="event-list pb-2">
                                                                     <p className="font-size-13 text-primary">2015 - 17</p>
-
                                                                     <h5 className="font-size-14 mb-1">Frontend Developer</h5>
                                                                     <p className="text-muted mb-0">ABC Company</p>
                                                                 </div>
@@ -261,7 +249,6 @@ const Profile = () => {
                                                             <SwiperSlide>
                                                                 <div className="event-list pb-2">
                                                                     <p className="font-size-13 text-primary">2018 - 20</p>
-
                                                                     <h5 className="font-size-14 mb-1">UI/UX Designer</h5>
                                                                     <p className="text-muted mb-0">XYZ Company</p>
                                                                 </div>
@@ -275,15 +262,12 @@ const Profile = () => {
                                         <Card>
                                             <CardBody>
                                                 <h5 className="card-title mb-3">Blog</h5>
-
                                                 <SimpleBar style={{ maxHeight: "242px" }}>
                                                     <ul className="list-group list-group-flush">
                                                         <li className="list-group-item py-3 px-0">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="flex-shrink-0 me-3">
-                                                                    <div>
-                                                                        <img src={img4} alt="blog img" className="avatar-lg h-auto rounded" />
-                                                                    </div>
+                                                                    <img src={img4} alt="blog img" className="avatar-lg h-auto rounded" />
                                                                 </div>
                                                                 <div className="flex-grow-1 overflow-hidden">
                                                                     <h5 className="font-size-14 mb-1 text-truncate"><Link to="#" className="text-dark">Beautiful Day with Friends</Link></h5>
@@ -319,9 +303,7 @@ const Profile = () => {
                                                         <li className="list-group-item py-3 px-0">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="flex-shrink-0 me-3">
-                                                                    <div>
-                                                                        <img src={img3} alt="blog img" className="avatar-lg h-auto rounded" />
-                                                                    </div>
+                                                                    <img src={img3} alt="blog img" className="avatar-lg h-auto rounded" />
                                                                 </div>
                                                                 <div className="flex-grow-1 overflow-hidden">
                                                                     <h5 className="font-size-14 mb-1 text-truncate"><Link to="#" className="text-dark">Morning skating with friends</Link></h5>
@@ -357,9 +339,7 @@ const Profile = () => {
                                                         <li className="list-group-item py-3 px-0">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="flex-shrink-0 me-3">
-                                                                    <div>
-                                                                        <img src={img2} alt="blog img" className="avatar-lg h-auto rounded" />
-                                                                    </div>
+                                                                    <img src={img2} alt="blog img" className="avatar-lg h-auto rounded" />
                                                                 </div>
                                                                 <div className="flex-grow-1 overflow-hidden">
                                                                     <h5 className="font-size-14 mb-1 text-truncate"><Link to="#" className="text-dark">Project Discussion with Team</Link></h5>
@@ -395,9 +375,7 @@ const Profile = () => {
                                                         <li className="list-group-item py-3 px-0">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="flex-shrink-0 me-3">
-                                                                    <div>
-                                                                        <img src={img9} alt="blog img" className="avatar-lg h-auto rounded" />
-                                                                    </div>
+                                                                    <img src={img9} alt="blog img" className="avatar-lg h-auto rounded" />
                                                                 </div>
                                                                 <div className="flex-grow-1 overflow-hidden">
                                                                     <h5 className="font-size-14 mb-1 text-truncate"><Link to="#" className="text-dark">Reading book</Link></h5>
@@ -440,7 +418,6 @@ const Profile = () => {
                                         <Card>
                                             <CardBody>
                                                 <h5 className="card-title mb-4">Skills</h5>
-
                                                 <div className="d-flex flex-wrap gap-2 font-size-16">
                                                     <Link to="#" className="badge badge-soft-primary">Photoshop</Link>
                                                     <Link to="#" className="badge badge-soft-primary">illustrator</Link>
@@ -456,7 +433,6 @@ const Profile = () => {
                                         <Card>
                                             <CardBody>
                                                 <h5 className="card-title mb-3">Portfolio</h5>
-
                                                 <div>
                                                     <ul className="list-unstyled mb-0">
                                                         <li>
@@ -474,7 +450,6 @@ const Profile = () => {
                                                         <li>
                                                             <Link to="#" className="py-2 d-block text-muted"><i className="uil uil-newspaper font-size-16 text-primary me-1"></i> Portfolio</Link>
                                                         </li>
-
                                                     </ul>
                                                 </div>
                                             </CardBody>
@@ -485,7 +460,6 @@ const Profile = () => {
                                                 <h5 className="card-title">Similar Profiles</h5>
                                             </div>
                                             <div>
-
                                                 <div className="list-group list-group-flush mb-2">
                                                     <Link to="#" className="list-group-item list-group-item-action">
                                                         <div className="d-flex align-items-center">
@@ -493,10 +467,8 @@ const Profile = () => {
                                                                 <img src={avatar2} alt="" className="img-thumbnail rounded-circle" />
                                                             </div>
                                                             <div className="flex-grow-1">
-                                                                <div>
-                                                                    <h5 className="font-size-14 mb-1">Esther James</h5>
-                                                                    <p className="font-size-13 text-muted mb-0">Frontend Developer</p>
-                                                                </div>
+                                                                <h5 className="font-size-14 mb-1">Esther James</h5>
+                                                                <p className="font-size-13 text-muted mb-0">Frontend Developer</p>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -506,10 +478,8 @@ const Profile = () => {
                                                                 <img src={avatar3} alt="" className="img-thumbnail rounded-circle" />
                                                             </div>
                                                             <div className="flex-grow-1">
-                                                                <div>
-                                                                    <h5 className="font-size-14 mb-1">Jacqueline Steve</h5>
-                                                                    <p className="font-size-13 text-muted mb-0">UI/UX Designer</p>
-                                                                </div>
+                                                                <h5 className="font-size-14 mb-1">Jacqueline Steve</h5>
+                                                                <p className="font-size-13 text-muted mb-0">UI/UX Designer</p>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -519,23 +489,19 @@ const Profile = () => {
                                                                 <img src={avatar4} alt="" className="img-thumbnail rounded-circle" />
                                                             </div>
                                                             <div className="flex-grow-1">
-                                                                <div>
-                                                                    <h5 className="font-size-14 mb-1">George Whalen</h5>
-                                                                    <p className="font-size-13 text-muted mb-0">Backend Developer</p>
-                                                                </div>
+                                                                <h5 className="font-size-14 mb-1">George Whalen</h5>
+                                                                <p className="font-size-13 text-muted mb-0">Backend Developer</p>
                                                             </div>
                                                         </div>
                                                     </Link>
                                                     <Link to="#" className="list-group-item list-group-item-action">
                                                         <div className="d-flex align-items-center">
                                                             <div className="avatar flex-shrink-0 me-3">
-                                                                <img src={avatar5} alt="" className="img-thumbnail rounded-circle" />
+                                                                <img src={avatar4} alt="" className="img-thumbnail rounded-circle" />
                                                             </div>
                                                             <div className="flex-grow-1">
-                                                                <div>
-                                                                    <h5 className="font-size-14 mb-1">Frontend Developer</h5>
-                                                                    <p className="font-size-13 text-muted mb-0">Frontend Developer</p>
-                                                                </div>
+                                                                <h5 className="font-size-14 mb-1">Frontend Developer</h5>
+                                                                <p className="font-size-13 text-muted mb-0">Frontend Developer</p>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -552,5 +518,4 @@ const Profile = () => {
         </React.Fragment>
     );
 };
-
 export default Profile;

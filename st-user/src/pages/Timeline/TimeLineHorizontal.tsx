@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, {
-    Autoplay, Pagination, Navigation, Keyboard, EffectFlip
-} from 'swiper/core';
-
-import "swiper/swiper.min.css";
-import "swiper/components/navigation/navigation.min.css";
-import "swiper/components/pagination/pagination.min.css";
-import "swiper/components/effect-flip/effect-flip.min.css";
+import { Autoplay, Pagination, Navigation, Keyboard, EffectFlip } from 'swiper/modules';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-flip";
 
 import {
     Card,
@@ -19,8 +16,6 @@ import {
 } from "reactstrap";
 
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-
-SwiperCore.use([Autoplay, Pagination, Navigation, Keyboard, EffectFlip]);
 
 const TimeLineHorizontal = () => {
     document.title = "Horizontal Timeline | Dashonic - React Admin & Dashboard Template";

@@ -118,10 +118,10 @@ const getTableData2 = (req, res, db) => {
         'battle_date',
         'total_strength'
     )
-        .from('war_iter_3.account_history as ah')
+        .from('paper_trading_test.account_history as ah')
         .whereIn(
             'account_history_id',
-            db('war_iter_3.account_history')
+            db('paper_trading_test.account_history')
                 .select(db.raw('MAX(account_history_id)'))
                 .groupBy('battle_date')
         )

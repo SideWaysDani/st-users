@@ -297,7 +297,7 @@ const userRoutes: Array<RouteProps> = [
   { path: "/profile", component: <UserProfile/> },
 
   // Maps
-  { path: "/maps-google", component: <MapsGoogle/> },
+  { path: "/maps-google", component: MapsGoogle },
   { path: "/maps-vector", component: <MapsVector/> },
   { path: "/maps-leaflet", component: <MapsLeaflet/> },
 

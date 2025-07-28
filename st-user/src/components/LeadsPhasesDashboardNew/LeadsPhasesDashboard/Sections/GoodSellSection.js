@@ -16,8 +16,8 @@ const GoodSellSection = () => {
     return (
         <div className="good-sell-section-new">
             <div className="good-sell-shaded-area-new"></div>
-            <div className="good-sloped-line-new">
-            </div>
+            {/* <div className="good-sloped-line-new">
+            </div> */}
 
             <span className="red-dot" onClick={togglePopup}></span>
 
@@ -29,20 +29,20 @@ const GoodSellSection = () => {
                     slidesPerView={1}
                     className="mySwiper"
                 >
-                    <SwiperSlide><p className="slider-text">Apple</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">Technology</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">+15</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Apple</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Technology</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">+15</p></SwiperSlide>
                 </Swiper>
             </div>
 
-            <p className="section-label">Sell</p>
+            <p className="section-label-new">Sell</p>
 
             {/* Bottom boxes */}
-            <div className="bottom-boxes">
+            {/* <div className="bottom-boxes">
                 {[...Array(11)].map((_, index) => (
                     <div key={index} className="gsell-box"></div>
                 ))}
-            </div>
+            </div> */}
 
             {showPopup && (
                 <div className="popup">

@@ -1,236 +1,315 @@
 /* Container for the entire section */
 .buy-section-new {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    width: 300px;
-    height: 400px;
-    background-color: transparent;
-    border-left: 0px dashed #00aaff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background-color: transparent;
+  border-left: 0px dashed #00aaff;
 }
 
 @media (max-width: 768px) {
-    .buy-section {
-        width: 80px;
-        height: 270px;
-    }
+  .buy-section-new {
+    width: 150px;
+    height: 250px;
+  }
 }
 
 @media (max-width: 480px) {
-    .buy-section {
-        width: 60px;
-        height: 190px;
-    }
+  .buy-section {
+    width: 60px;
+    height: 190px;
+  }
 }
 
 /* Shaded area under the dotted line */
 .buy-shaded-area-new {
-    position: absolute;
-    top: 32px;
-    left: 0;
-    width: 100%;
-    height: 365px;
-    background: rgba(43, 239, 9, 0.2); /* Light green shade */
-    clip-path: polygon(0 100%, 0 60%, 100% 0, 100% 100%);
-    border-left: 1px dashed #cccccc;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  height: 365px;
+  background: url("../BgImages/pic1.png") center center / cover no-repeat;
+  clip-path: polygon(0 100%, 0 60%, 100% 0, 100% 100%);
+  overflow: visible;
 }
 
+.buy-shaded-area-new::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 365px;
+  clip-path: polygon(0 60%, 100% 0, 100% 3%, 0 63%);
+ background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.9) 0%,
+      hsl(var(--primary) / 0.7) 30%,
+      hsl(var(--primary) / 0.4) 60%,
+      hsl(var(--primary) / 0.1) 100%
+    );
+    box-shadow: 
+      0 0 15px hsl(var(--primary) / 0.8),
+      0 0 30px hsl(var(--primary) / 0.6),
+      0 0 45px hsl(var(--primary) / 0.4),
+      0 0 60px hsl(var(--primary) / 0.2),
+      inset 0 20px 40px hsl(var(--primary) / 0.9),
+      inset 0 10px 20px hsl(var(--primary) / 0.7),
+      inset 0 -5px 15px hsl(var(--primary) / 0.3);
+    z-index: 2;
+    pointer-events: none;
+}
+
+
 @media (max-width: 768px) {
-    .buy-shaded-area {
-        height: 240px;
-    }
+  .buy-shaded-area-new {
+    height: 210px;
+  }
 }
 
 @media (max-width: 480px) {
-    .buy-shaded-area {
-        height: 155px;
-    }
+  .buy-shaded-area {
+    height: 155px;
+  }
 }
 
 /* Dotted sloped line */
+/* .buy-sloped-line-new {
+  position: absolute;
+  top: 142px;
+  left: 0;
+  width: 100%;
+  height: 0;
+
+  background: transparent;
+  border: none;
+
+} */
+
 .buy-sloped-line-new {
-    position: absolute;
-    top: 142px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    border-top: 2px dashed #00aaff;
-    transform: rotate(146deg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: absolute;
+  top: 142px;
+  left: 0;
+  width: 100%;
+  height: 2px; /* simulate the border height */
+  background: transparent;
+  transform: rotate(146deg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Glowy light effect */
+  box-shadow:
+    0 0 6px #00aaff,
+    0 0 12px #00aaff,
+    0 0 18px #00aaff;
 }
 
+
+
 @media (max-width: 768px) {
-    .buy-sloped-line {
-        top: 45px;
-        transform: rotate(330deg);
-    }
+  .buy-sloped-line-new {
+    top: 95px;
+    transform: rotate(315deg);
+  }
 }
 
 @media (max-width: 480px) {
-    .buy-sloped-line {
-        top: 40px;
-    }
+  .buy-sloped-line {
+    top: 40px;
+  }
 }
 
 /* Dots on the ends of the dotted line */
 .dot {
-    width: 5px;
-    height: 5px;
-    background-color: #00aaff;
-    border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  background-color: #00aaff;
+  border-radius: 50%;
 }
 
 @media (max-width: 768px) {
-    .dot {
-        width: 4px;
-        height: 4px;
-    }
+  .dot {
+    width: 3px;
+    height: 3px;
+  }
 }
 
 @media (max-width: 480px) {
-    .dot {
-        width: 3px;
-        height: 3px;
-    }
+  .dot {
+    width: 3px;
+    height: 3px;
+  }
 }
 
 /* Red dot in the middle to trigger popup */
 .red-dot {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-    .red-dot {
-        width: 16px;
-        height: 16px;
-    }
+  .red-dot {
+    width: 5px;
+    height: 5px;
+  }
 }
 
 @media (max-width: 480px) {
-    .red-dot {
-        width: 12px;
-        height: 12px;
-    }
+  .red-dot {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* Ensure red dot is centered */
 .red-dot {
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    margin-bottom: 10px; /* Adjust space below the red dot */
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 10px; /* Adjust space below the red dot */
 }
 
 /* Section label */
-.section-label {
-    margin-top: auto;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #7b7b7b;
+.section-label-new {
+  margin-top: auto;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #ffffff;
+  position: relative;   
+  z-index: 3; 
 }
 
 @media (max-width: 768px) {
-    .section-label {
-        font-size: 14px;
-    }
+  .section-label-new {
+    padding: 2px 0;
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 480px) {
-    .section-label {
-        font-size: 10px;
-    }
+  .section-label-new {
+    font-size: 10px;
+  }
 }
 
 /* Bottom boxes */
 .bottom-boxes {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    padding: 10px 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 10px 0;
 }
 
 .box {
-    width: 20px;
-    height: 20px;
-    background-color: #b4ec51; /* Light green */
+  width: 20px;
+  height: 20px;
+  background-color: #b4ec51; /* Light green */
 }
 
 @media (max-width: 768px) {
-    .box {
-        width: 16px;
-        height: 16px;
-    }
+  .box {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 @media (max-width: 480px) {
-    .box {
-        width: 12px;
-        height: 12px;
-    }
+  .box {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* Popup styling - center of the screen */
 .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    text-align: center;
-    width: 80%;
-    max-width: 400px;
-    overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
-    .popup {
-        padding: 15px;
-        width: 90%;
-    }
+  .popup {
+    padding: 15px;
+    width: 90%;
+  }
 }
 
 @media (max-width: 480px) {
-    .popup {
-        padding: 10px;
-        width: 95%;
-    }
+  .popup {
+    padding: 10px;
+    width: 95%;
+  }
 }
 
 .popup button {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .buy-text-slider {
-    width: 100%;
+  width: 100%;
+  max-width: 150px;
+  position: relative;
+  top: 210px;
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .buy-text-slider {
+    max-width: 110px;
+    top: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .buy-text-slider {
     max-width: 150px;
-    position: relative;
-    top: 210px;
-    background-color: #fff;
+    top: 120px;
+  }
 }
 
 /* Style for the text inside the slider */
-.slider-text {
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    padding: 10px;
+.slider-text-new {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .slider-text-new {
+    font-size: 10px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-text-new {
+    max-width: 150px;
+    top: 120px;
+  }
 }

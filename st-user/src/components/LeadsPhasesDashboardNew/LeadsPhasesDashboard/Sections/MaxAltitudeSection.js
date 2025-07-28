@@ -20,7 +20,8 @@ const MaxAltitudeSection = () => {
 
             {/* Dashed Lines */}
             <div className="top-dashed-line-new"></div>
-            <div className="altitude-text-slider" style={{ top: '160px' }}>
+            {/* <div className="altitude-text-slider altitude-text-slider-top"></div> */}
+            <div className="altitude-text-slider altitude-text-slider-top">
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     pagination={{ clickable: true }}
@@ -28,14 +29,14 @@ const MaxAltitudeSection = () => {
                     slidesPerView={1}
                     className="mySwiper"
                 >
-                    <SwiperSlide><p className="slider-text">Apple</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">Technology</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">+15</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Apple</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Technology</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">+15</p></SwiperSlide>
                 </Swiper>
             </div>
 
             <div className="middle-dashed-line-new"></div>
-            <div className="altitude-text-slider" style={{ top: '200px' }}>
+            <div className="altitude-text-slider altitude-text-slider-middle" >
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     pagination={{ clickable: true }}
@@ -43,14 +44,14 @@ const MaxAltitudeSection = () => {
                     slidesPerView={1}
                     className="mySwiper"
                 >
-                    <SwiperSlide><p className="slider-text">Apple</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">Technology</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">+15</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Apple</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Technology</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">+15</p></SwiperSlide>
                 </Swiper>
             </div>
 
             <div className="bottom-dashed-line-new"></div>
-            <div className="altitude-text-slider" style={{ top: '240px' }}>
+            <div className="altitude-text-slider altitude-text-slider-bottom" >
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     pagination={{ clickable: true }}
@@ -58,37 +59,35 @@ const MaxAltitudeSection = () => {
                     slidesPerView={1}
                     className="mySwiper"
                 >
-                    <SwiperSlide><p className="slider-text">Apple</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">Technology</p></SwiperSlide>
-                    <SwiperSlide><p className="slider-text">+15</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Apple</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">Technology</p></SwiperSlide>
+                    <SwiperSlide><p className="slider-text-new">+15</p></SwiperSlide>
                 </Swiper>
             </div>
 
             {/* Labels and Orange Dots */}
-            <div className="label-dot-container" style={{ top: '150px' }}>
+            <div className="label-dot-container label-dot-top">
                 <span className="red-dot"></span>
                 {/* <p className="label-text">Interplatform</p> */}
             </div>
-
-            <div className="label-dot-container" style={{ top: '250px' }}>
+            <div className="label-dot-container label-dot-middle">
                 <span className="red-dot"></span>
                 {/* <p className="label-text">Stellar</p> */}
             </div>
-
-            <div className="label-dot-container" style={{ top: '350px' }}>
+            <div className="label-dot-container label-dot-bottom">
                 <span className="red-dot" onClick={togglePopup}></span>
                 {/* <p className="label-text">Alpha</p> */}
             </div>
 
             {/* Bottom Label */}
-            <p className="section-label">Max Altitude</p>
+            <p className="section-label-new">Max Altitude</p>
 
             {/* Bottom Boxes */}
-            <div className="bottom-boxes">
+            {/* <div className="bottom-boxes">
                 {[...Array(11)].map((_, index) => (
                     <div key={index} className="max-altitude-box"></div>
                 ))}
-            </div>
+            </div> */}
 
             {/* DotMaxAltitude Component Popup */}
             {showPopup && (

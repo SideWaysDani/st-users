@@ -1005,6 +1005,13 @@ const menuItems: Array<MenuItemsProps> = [
         "icon": "monitor",
         "link": "/phases-dashboard-new",
     },
+    {
+        "id": 153,
+        "novidade": false,
+        "label": "User Onboarding",
+        "icon": "user-plus",
+        "link": "/user-onboarding",
+    },
 ];
 
 export { menuItems };

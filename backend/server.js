@@ -26,6 +26,7 @@ const main3 = require('../st-user/src/components/StrengthLineGraph/Controllers/m
 const main4 = require('../st-user/src/components/SectorsGraph/Controllers/main4')
 const main5 = require('../st-user/src/components/CommittedStrengthLineGraph/Controllers/main5')
 const leadsmain = require('../st-user/src/components/LeadsPhasesDashboard/Controllers/leadsmain')
+const addUser = require('../st-user/src/components/AddUser/Controllers/addUser');
 // App
 const app = express();
 
@@ -76,6 +77,8 @@ app.get('/leads_phases', (req, res) => leadsmain.getTableData(req, res, db));
 app.get('/leads_phases/:id', (req, res) => leadsmain.getTableData2(req, res, db));
 app.put('/leads_phases/:id', (req, res) => leadsmain.getTableData3(req, res, db));
 app.delete('/leads_phases/:id', (req, res) => leadsmain.getTableData4(req, res, db));
+
+app.post('/addUser', (req, res) => addUser.insertNewUser(req, res, db));
 
 // Paper Trading - paper_trading_test
 app.get('/api/dataa', async (req, res) => {

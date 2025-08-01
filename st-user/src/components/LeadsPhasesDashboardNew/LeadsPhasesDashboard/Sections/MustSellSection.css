@@ -46,8 +46,8 @@
   width: 100%;
   height: 180px;
   clip-path: polygon(0 0, 100% 60%, 100% 62%, 0 2%);
-  background: #a3e2f1; 
-  box-shadow: 0 0 8px #a3e2f1, 0 0 16px #a3e2f1;
+  /* background: #a3e2f1; 
+  box-shadow: 0 0 8px #a3e2f1, 0 0 16px #a3e2f1; */
   z-index: 2;
   pointer-events: none;
 }

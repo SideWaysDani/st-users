@@ -123,6 +123,7 @@ const App = () => {
   const [items4, setItems4] = useState([]);
   const [items5, setItems5] = useState([]);
   const [items6, setItems6] = useState([]);
+  const [items7, setItems7] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [editableId, setEditableId] = useState(null);
 
@@ -295,6 +296,32 @@ const App = () => {
     fetchData();
   }, []);
 
+    // iteration 6
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        //const response = await fetch('http://localhost:5000/crudd');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/apnl7`);
+        const data = await response.json();
+
+        // Format the dates
+        const formattedData = data.map(item7 => ({
+          ...item7,
+          battle_date: new Date(item7.battle_date).toLocaleDateString('en-GB') // format date as dd/mm/yyyy
+        }));
+
+        setItems7(formattedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   return (
     <Container className="App" style={{ marginBottom: '100px' }}>
@@ -355,6 +382,8 @@ const App = () => {
           <LineGraph data={items6} /> {/* Pass data as props to LineChart */}
           <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Paper Trading - paper_trading_test</h1>
           <LineGraph data={items2} /> {/* Pass data as props to LineChart */}
+          <h1 style={{ margin: '20px 0' }}>Comulative Profit and Loss - Iteration 6 - war_iter_6</h1>
+          <LineGraph data={items7} /> {/* Pass data as props to LineChart */}
         </Col>
       </Row>
     </Container>

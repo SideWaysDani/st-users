@@ -46,6 +46,7 @@ app.get('/lineGraph3', (req, res) => main2.getTableData3(req, res, db));
 app.get('/lineGraph4', (req, res) => main2.getTableData4(req, res, db));
 app.get('/lineGraph5', (req, res) => main2.getTableData5(req, res, db));
 app.get('/lineGraph6', (req, res) => main2.getTableData6(req, res, db));
+app.get('/lineGraph7', (req, res) => main2.getTableData7(req, res, db));
 
 app.get('/strength1', (req, res) => main3.getTableData(req, res, db));
 app.get('/strength2', (req, res) => main3.getTableData2(req, res, db));
@@ -53,6 +54,7 @@ app.get('/strength3', (req, res) => main3.getTableData3(req, res, db));
 app.get('/strength4', (req, res) => main3.getTableData4(req, res, db));
 app.get('/strength5', (req, res) => main3.getTableData5(req, res, db));
 app.get('/strength6', (req, res) => main3.getTableData6(req, res, db));
+app.get('/strength7', (req, res) => main3.getTableData7(req, res, db));
 
 app.get('/cstrength1', (req, res) => main5.getTableData(req, res, db));
 app.get('/cstrength2', (req, res) => main5.getTableData2(req, res, db));
@@ -60,6 +62,7 @@ app.get('/cstrength3', (req, res) => main5.getTableData3(req, res, db));
 app.get('/cstrength4', (req, res) => main5.getTableData4(req, res, db));
 app.get('/cstrength5', (req, res) => main5.getTableData5(req, res, db));
 app.get('/cstrength6', (req, res) => main5.getTableData6(req, res, db));
+app.get('/cstrength7', (req, res) => main5.getTableData7(req, res, db));
 
 app.get('/sector1', (req, res) => main4.getTableData(req, res, db));
 app.get('/sector2', (req, res) => main4.getTableData2(req, res, db));
@@ -72,6 +75,7 @@ app.get('/apnl3', (req, res) => main.getTableData3(req, res, db));
 app.get('/apnl4', (req, res) => main.getTableData4(req, res, db));
 app.get('/apnl5', (req, res) => main.getTableData5(req, res, db));
 app.get('/apnl6', (req, res) => main.getTableData6(req, res, db));
+app.get('/apnl7', (req, res) => main.getTableData7(req, res, db));
 
 app.get('/leads_phases', (req, res) => leadsmain.getTableData(req, res, db));
 app.get('/leads_phases/:id', (req, res) => leadsmain.getTableData2(req, res, db));
@@ -405,6 +409,67 @@ app.get('/api/data5', async (req, res) => {
               war_iter_5.deployment d ON p.unit_assignment_id = d.unit_assignment_id
           LEFT JOIN
               war_iter_5.allocation a ON d.deployment_id = a.deployment_id
+          LEFT JOIN
+              stocktrader.leads l on p.lead_id = l.id
+          LEFT JOIN
+              stocktrader.fortune_1000_india f ON l.stock_name = f.ticker		
+          order by
+          	  p.battle_date asc
+        `;
+
+        const data = await db.raw(query);
+
+        const formattedData = data.rows.map(row => ({
+            performance_id: row.performance_id,
+            unit_assignment_id: row.unit_assignment_id,
+            profit_and_loss: row.profit_and_loss,
+            battle_date: row.battle_date,
+            lead_id: row.lead_id,
+            percentageprofitandloss: row.percentageprofitandloss,
+            start_date: row.start_date,
+            end_date: row.end_date,
+            status: row.status,
+            quadrant: row.lead_id,
+            stock_name: row.stock_name,
+            ticker: row.ticker,
+            sector: row.sector,
+            color: row.profit_and_loss >= 0 ? 'green' : 'red'
+        }));
+
+        console.log('Formatted Data:', formattedData);
+
+        res.json(formattedData);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+// iteration 6
+
+app.get('/api/data6', async (req, res) => {
+    try {
+        const query = `
+            SELECT
+              p.performance_id,
+              p.unit_assignment_id,
+              p.profit_and_loss,
+              p.battle_date,
+              p.lead_id,
+              p.percentageprofitandloss,
+              d.start_date,
+              d.end_date,
+              d.status,
+              l.stock_name,
+              f.ticker,
+              f.sector
+          FROM
+              war_iter_6.performance p
+          LEFT JOIN
+              war_iter_6.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+          LEFT JOIN
+              war_iter_6.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
               stocktrader.leads l on p.lead_id = l.id
           LEFT JOIN

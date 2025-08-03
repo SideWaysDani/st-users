@@ -21,7 +21,7 @@ const fullName = `${props.data.name} (${props.data.stock_name || 'N/A'}, ${props
   // Handle text truncation if necessary
   //const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;
   const shortName = `${props.data.name}`;
-    console.log("stock name: ", props.stock_name);
+    // console.log("stock name: ", props.stock_name);
     
     // Handle text truncation if necessary
     //const shortName = fullName.length > MAX_LENGTH ? fullName.substr(0, MAX_LENGTH) + "..." : fullName;

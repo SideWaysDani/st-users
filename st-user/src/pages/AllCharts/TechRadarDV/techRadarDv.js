@@ -61,18 +61,27 @@ function App() {
     const [selectedDate6, setSelectedDate6] = useState('');
     const [isPlaying6, setIsPlaying6] = useState(false);
 
+    const [setup7, setSetup7] = useState({
+        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
+        quadrants: [],
+        data: []
+    });
+
+    const [battleDates7, setBattleDates7] = useState([]);
+    const [selectedDate7, setSelectedDate7] = useState('');
+    const [isPlaying7, setIsPlaying7] = useState(false);
 
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data`);
                 //const response = await fetch('http://localhost:5000/api/data');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -88,7 +97,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData);
+                    // console.log('Mapped data:', mappedData);
 
                     setBattleDates(uniqueBattleDates);
                     setSetup({
@@ -150,13 +159,13 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/dataa`);
                 //const response = await fetch('http://localhost:5000/api/dataa');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates2 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -172,7 +181,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData2);
+                    // console.log('Mapped data:', mappedData2);
 
                     setBattleDates2(uniqueBattleDates2);
                     setSetup2({
@@ -244,13 +253,13 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data4.2`);
                 //const response = await fetch('http://localhost:5000/api/dataa');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates3 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -266,7 +275,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData3);
+                    // console.log('Mapped data:', mappedData3);
 
                     setBattleDates3(uniqueBattleDates3);
                     setSetup3({
@@ -326,13 +335,13 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data4.3`);
                 //const response = await fetch('http://localhost:5000/api/dataa');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates4 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -348,7 +357,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData4);
+                    // console.log('Mapped data:', mappedData4);
 
                     setBattleDates4(uniqueBattleDates4);
                     setSetup4({
@@ -408,13 +417,13 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data4.4`);
                 //const response = await fetch('http://localhost:5000/api/dataa');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates5 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -430,7 +439,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData5);
+                    // console.log('Mapped data:', mappedData5);
 
                     setBattleDates5(uniqueBattleDates5);
                     setSetup5({
@@ -490,13 +499,13 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('API URL:', process.env.REACT_APP_API_URL);
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
 
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data5`);
                 //const response = await fetch('http://localhost:5000/api/dataa');
                 const data = await response.json();
 
-                console.log('Fetched data:', data);
+                // console.log('Fetched data:', data);
 
                 if (Array.isArray(data)) {
                     const uniqueBattleDates6 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
@@ -512,7 +521,7 @@ function App() {
                         battle_date: item.battle_date.split('T')[0]
                     }));
 
-                    console.log('Mapped data:', mappedData6);
+                    // console.log('Mapped data:', mappedData6);
 
                     setBattleDates6(uniqueBattleDates6);
                     setSetup6({
@@ -566,6 +575,90 @@ function App() {
             setIsPlaying6(true);
         }
     };
+
+ //------------------------------------------------------------------------------------------------------------------
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // console.log('API URL:', process.env.REACT_APP_API_URL);
+
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/data6`);
+                //const response = await fetch('http://localhost:5000/api/dataa');
+                const data = await response.json();
+
+                // console.log('Fetched data:', data);
+
+                if (Array.isArray(data)) {
+                    const uniqueBattleDates7 = [...new Set(data.map(item => item.battle_date.split('T')[0]))];
+                    const sectors7 = [...new Set(data.map(item => item.sector))];
+                    const mappedData7 = data.map(item => ({
+                        name: `Unit ${item.unit_assignment_id}`,
+                        quadrant: item.sector,
+                        ring: determineRing(parseFloat(item.percentageprofitandloss)),
+                        percentageprofitandloss: item.percentageprofitandloss,
+                        profit_and_loss: item.profit_and_loss,
+                        unit_assignment_id: item.unit_assignment_id,
+                        stock_name: item.stock_name,
+                        battle_date: item.battle_date.split('T')[0]
+                    }));
+
+                    // console.log('Mapped data:', mappedData7);
+
+                    setBattleDates7(uniqueBattleDates7);
+                    setSetup7({
+                        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
+                        quadrants: sectors7,
+                        data: mappedData7
+                    });
+                } else {
+                    console.error('API response is not an array:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        let interval;
+        if (isPlaying7) {
+            setSelectedDate7(battleDates7[0]);
+            interval = setInterval(() => {
+                setSelectedDate7(prevDate => {
+                    const currentIndex = battleDates7.indexOf(prevDate); // Corrected line
+                    const nextIndex = currentIndex + 1;
+
+                    if (nextIndex >= battleDates7.length) { // Corrected line
+                        setIsPlaying7(false);
+                        clearInterval(interval);
+                        return prevDate;
+                    }
+
+                    return battleDates7[nextIndex]; // Corrected line
+                });
+            }, 5000);
+        }
+
+        return () => clearInterval(interval);
+    }, [isPlaying7, battleDates7]);
+
+    const filteredData7 = selectedDate7
+        ? setup7.data.filter(item => item.battle_date === selectedDate7)
+        : setup7.data;
+
+    const handlePlayClick7 = () => {
+        if (isPlaying7) {
+            setIsPlaying7(false);
+        } else {
+            setSelectedDate7(battleDates7[0]);
+            setIsPlaying7(true);
+        }
+    };
+
+
 
     //console.log('Setup quadrants:', setup.quadrants);
 
@@ -699,6 +792,28 @@ function App() {
                     </div>
                     <div className="chart-container" style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
                         <RadarTimer {...setup2} data={filteredData2} animate={isPlaying2} />
+                    </div>
+                </div>
+            </div>
+
+            <div style={{ marginTop: '100px', marginLeft: '0px' }}>
+                <div className="App">
+                    <h1 style={{ margin: '20px 0' }}>Tech Radar Graph - Iteration 6 - war_iter_6</h1>
+                    <div className="dropdown-container">
+                        <select onChange={(e) => setSelectedDate7(e.target.value)} value={selectedDate7} disabled={isPlaying7}>
+                            <option value="">Select Battle Date</option>
+                            {battleDates7.map((date, index) => (
+                                <option key={index} value={date}>
+                                    {date}
+                                </option>
+                            ))}
+                        </select>
+                        <button onClick={handlePlayClick7}>
+                            {isPlaying7 ? 'Stop' : 'Play'}
+                        </button>
+                    </div>
+                    <div className="chart-container" style={{ backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '10px' }}>
+                        <RadarTimer {...setup} data={filteredData7} animate={isPlaying7} />
                     </div>
                 </div>
             </div>

@@ -39,7 +39,7 @@ function Quadrant(props) {
 
     const radiuses = calculateRadiusDiminish(props.rings.length);
 
-    console.log('Quadrant props:', props);
+    // console.log('Quadrant props:', props);
 
     const getSectorLabelPosition = (index) => {
         const margin = sectorLabelMargin;

@@ -352,7 +352,7 @@ function RadarTimer(props) {
 
     const processedData = processRadarData(props.quadrants, props.rings, data);
 
-    console.log('Processed Data for Quadrant:', processedData);
+    // console.log('Processed Data for Quadrant:', processedData);
 
     return (
         <div
@@ -364,7 +364,7 @@ function RadarTimer(props) {
                     {props.quadrants.map((quadrant, index) => {
                         const filteredPoints = processedData.filter((value) => value.quadrant === `Lead${quadrant}`);
 
-                        console.log(`Quadrant ${quadrant}:`, filteredPoints);
+                        // console.log(`Quadrant ${quadrant}:`, filteredPoints);
 
                         return (
                             <Quadrant

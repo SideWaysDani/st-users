@@ -989,6 +989,12 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/data-vizualization-5",
                 parentId: 144
             },
+                        {
+                id: 154,
+                label: "Leads Utilization Graph",
+                link: "/leadsutlization",
+                parentId: 144
+            },
         ]
     },
     {

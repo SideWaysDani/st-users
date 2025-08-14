@@ -25,6 +25,7 @@ const main = require('../st-user/src/components/cplLineGraph/Controllers/main')
 const main3 = require('../st-user/src/components/StrengthLineGraph/Controllers/main3')
 const main4 = require('../st-user/src/components/SectorsGraph/Controllers/main4')
 const main5 = require('../st-user/src/components/CommittedStrengthLineGraph/Controllers/main5')
+const main6 = require('../st-user/src/components/LeadsUtilizationGraph/Controllers/main6')
 const leadsmain = require('../st-user/src/components/LeadsPhasesDashboard/Controllers/leadsmain')
 const addUser = require('../st-user/src/components/AddUser/Controllers/addUser');
 // App
@@ -63,6 +64,8 @@ app.get('/cstrength4', (req, res) => main5.getTableData4(req, res, db));
 app.get('/cstrength5', (req, res) => main5.getTableData5(req, res, db));
 app.get('/cstrength6', (req, res) => main5.getTableData6(req, res, db));
 app.get('/cstrength7', (req, res) => main5.getTableData7(req, res, db));
+
+app.get('/leadsutilization', (req, res) => main6.getTableData(req, res, db));
 
 app.get('/sector1', (req, res) => main4.getTableData(req, res, db));
 app.get('/sector2', (req, res) => main4.getTableData2(req, res, db));
@@ -471,9 +474,9 @@ app.get('/api/data6', async (req, res) => {
           LEFT JOIN
               war_iter_6.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000_india f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
           order by
           	  p.battle_date asc
         `;

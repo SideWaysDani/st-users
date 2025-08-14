@@ -145,6 +145,8 @@ import CplLineGraph from "src/pages/AllCharts/cplLineGraph/cplLineGraph";
 import StrengthLineGRaph from "src/pages/AllCharts/StrengthLineGraph/StrengthLineGraph";
 import SectorLineGraph from "src/pages/AllCharts/SectorLineGraph/SectorLineGraph";
 import CommittedStrength from "src/pages/AllCharts/CommittedStrengthLG/CommittedStrengthLG";
+import LeadsUtilizationGraph from "src/pages/AllCharts/LeadsUtilization/LeadsUtilization";
+
 
 // Dashboard
 import PhasesDashboard from "src/pages/Dashboard/PhasesDashboard/PhaseDashboard";
@@ -282,6 +284,7 @@ const userRoutes: Array<RouteProps> = [
   { path: "/data-vizualization-4", component: <StrengthLineGRaph />},
   { path: "/data-vizualization-5", component: <SectorLineGraph />},
   { path: "/data-vizualization-6", component: <CommittedStrength />},
+  { path: "/leadsutlization", component: <LeadsUtilizationGraph /> },
 
   // Dashboard
   { path: "/phases-dashboard", component: <PhasesDashboard />},

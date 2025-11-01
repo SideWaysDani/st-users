@@ -33,7 +33,7 @@ const getTableData = (req, res, db) => {
 
 const getTableData2 = (req, res, db) => {
   // Subquery for FilteredAllocationHistory
-  const filteredAllocationHistory = db('paper_trading_test.allocation_history')
+  const filteredAllocationHistory = db('live_trading_multi_8.allocation_history')
     .select('battle_date')
     .sum('p_and_l as total_p_and_l')
     .whereIn('status', ['set_limit removing', 'stop_loss removing', 'api_signal sell'])
@@ -50,7 +50,7 @@ const getTableData2 = (req, res, db) => {
       `)
   )
     .from(filteredAllocationHistory)
-    .join('paper_trading_test.account_history as a', 'f.battle_date', 'a.battle_date')
+    .join('live_trading_multi_8.account_history as a', 'f.battle_date', 'a.battle_date')
     .groupBy('f.battle_date', 'f.total_p_and_l')
     .orderBy('f.battle_date')
     .then(profitLossItems => {

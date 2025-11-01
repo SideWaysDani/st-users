@@ -776,7 +776,7 @@ function App() {
 
             <div style={{ marginTop: '10px', marginLeft: '0px' }}>
                 <div className="App">
-                    <h1 style={{ margin: '20px 0' }}>Tech Radar Graph - Live Trading - paper_trading_test</h1>
+                    <h1 style={{ margin: '20px 0' }}>Tech Radar Graph - Live Trading - live_trading_multi_8</h1>
                     <div className="dropdown-container">
                         <select onChange={(e) => setSelectedDate2(e.target.value)} value={selectedDate2} disabled={isPlaying2}>
                             <option value="">Select Battle Date</option>

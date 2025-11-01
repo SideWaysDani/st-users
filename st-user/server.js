@@ -58,13 +58,13 @@ app.get('/api/dataa', async (req, res) => {
               f.ticker,
               f.sector
           FROM 
-              paper_trading_test.performance p
+              live_trading_multi_8.performance p
           LEFT JOIN 
-              paper_trading_test.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+              live_trading_multi_8.deployment d ON p.unit_assignment_id = d.unit_assignment_id
           LEFT JOIN 
-              paper_trading_test.allocation a ON d.deployment_id = a.deployment_id
+              live_trading_multi_8.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN 
-              paper_trading_test.leads l ON p.lead_id = l.leads_id
+              live_trading_multi_8.leads l ON p.lead_id = l.leads_id
           LEFT JOIN 
               stocktrader.fortune_1000 f ON l.stock_name = f.ticker
       `;

@@ -107,7 +107,7 @@ const getTableData7 = (req, res, db) => {
 };
 
 const getTableData2 = (req, res, db) => {
-    db('paper_trading_test.account_history')
+    db('live_trading_multi_8.account_history')
         .select(
             'battle_date',
             db.raw('(MAX(active_strength) / AVG(total_strength)) * 100 AS total_strength')

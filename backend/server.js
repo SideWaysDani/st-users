@@ -92,7 +92,7 @@ app.get('/fortune_1000', (req, res) => main7.getTableData(req, res, db));
 app.put('/deactivate_lead/:rank', (req, res) => main7.deactivateLead(req, res, db));
 app.put('/activate_lead/:rank', (req, res) => main7.activateLead(req, res, db));
 
-// Live Trading - paper_trading_test
+// Live Trading - live_trading_multi_8
 app.get('/api/dataa', async (req, res) => {
     try {
         const query = `
@@ -110,11 +110,11 @@ app.get('/api/dataa', async (req, res) => {
               f.ticker,
               f.sector
           FROM
-              paper_trading_test.performance p
+              live_trading_multi_8.performance p
           LEFT JOIN
-              paper_trading_test.deployment d ON p.unit_assignment_id = d.unit_assignment_id
+              live_trading_multi_8.deployment d ON p.unit_assignment_id = d.unit_assignment_id
           LEFT JOIN
-              paper_trading_test.allocation a ON d.deployment_id = a.deployment_id
+              live_trading_multi_8.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
               stocktrader.leads l on p.lead_id = l.id
           LEFT JOIN

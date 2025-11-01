@@ -3,7 +3,7 @@
     align-items: flex-end; /* Align items to the bottom line */
     gap: 0px;
     padding: 20px;
-    background: linear-gradient(0deg, #001f3e 50%, #024486 100%);
+    background: linear-gradient(0deg, #001f3e 50%, #0861bb 100%);
 }
 
 .pyramid-section {

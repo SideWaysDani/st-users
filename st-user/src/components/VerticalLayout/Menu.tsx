@@ -938,12 +938,12 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/usersapp",
                 parentId: 139
             },
-            {
-                id: 143,
-                label: "Leads Analysis II",
-                link: "/leadanalysis",
-                parentId: 139
-            },
+            // {
+            //     id: 143,
+            //     label: "Leads Analysis II",
+            //     link: "/leadanalysis",
+            //     parentId: 139
+            // },
         ]
     },
     {
@@ -1017,6 +1017,13 @@ const menuItems: Array<MenuItemsProps> = [
         "label": "User Onboarding",
         "icon": "user-plus",
         "link": "/user-onboarding",
+    },
+        {
+        "id": 154,
+        "novidade": false,
+        "label": "Leads Status",
+        "icon": "edit-3",
+        "link": "/leadanalysis",
     },
 ];
 

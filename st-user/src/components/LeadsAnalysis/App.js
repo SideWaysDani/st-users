@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap'; // Assuming you're using Reactstrap
+import { Container, Row, Col } from 'reactstrap';
 
 const App = () => {
-  // State variables for data and editing (assuming you have editing functionality)
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [editableId, setEditableId] = useState(null);
 
-  // Function to fetch items from the server with the new query
   const getItems = async () => {
     try {
-      const response = await fetch('http://localhost:5000/crud');
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/fortune_1000`);
       const data = await response.json();
       if (data.length > 0) {
         setItems(data);
@@ -33,86 +30,154 @@ const App = () => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
-  // Function to handle edit click, setting the editable ID (assuming you have implementation)
-  const handleEditClick = (id) => {
-    setEditableId(id);
+  const handleActionClick = (rank) => {
+    const lead = items.find(item => item.rank === rank);
+    if (!lead) return;
+
+    const action = lead.activation_status === 'Active' ? 'deactivate' : 'activate';
+    const url = `${process.env.REACT_APP_API_URL}/${action}_lead/${rank}`;
+
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ rank }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.message);
+        getItems();
+      })
+      .catch(error => {
+        console.error(`Error during ${action} lead:`, error);
+      });
   };
 
-  // Function to handle delete click, sending the delete request to the server (assuming you have implementation)
-  const handleDeleteClick = async (id) => {
-    // Implement the delete logic here (e.g., using fetch with DELETE method)
-  };
+
 
   return (
-    <Container className="App" style={{ marginBottom: '100px' }}>
+    <Container className="App" style={{ marginTop: '30px', marginBottom: '80px' }}>
       <Row>
         <Col>
-          <h1 style={{ margin: '20px 0' }}>Leads Analysis</h1>
+          <h2
+            style={{
+              textAlign: 'center',
+              marginBottom: '25px',
+              fontWeight: 'bold',
+              color: '#333',
+            }}
+          >
+            Leads Analysis
+          </h2>
         </Col>
       </Row>
+
       <Row>
         <Col>
-          {isLoading && <p>Loading data...</p>}
-          {items.length > 0 && (
-            <table style={{ width: '100%', borderSpacing: '10px' }}>
-              <thead>
-                <tr>
-                  <th>Lead Date</th>
-                  <th>Stock Name</th>
-                  <th>Sector</th>
-                  <th>Company</th>
-                  <th>Percentage Change</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>Duration</th>
-                  <th>Lagging</th>
-                  <th>Actual</th>
-                  <th>Lead Percentage Change</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => (
-                  <tr key={item.id}> {/* Use a unique identifier from the data for the key */}
-                    <td>
-                      {item.lead_date ? new Date(item.lead_date).toLocaleDateString() : 'N/A'}
-                    </td>
-                    <td>{item.stock_name || 'N/A'}</td>
-                    <td>{item.sector || 'N/A'}</td>
-                    <td>{item.company || 'N/A'}</td>
-                    <td>
-                      {typeof item.percentage_change === 'number' ? item.percentage_change.toFixed(2) : 'N/A'}
-                    </td>
-                    <td>
-                      {item.start_date ? new Date(item.start_date).toLocaleDateString() : 'N/A'}
-                    </td>
-                    <td>
-                      {item.end_date ? new Date(item.end_date).toLocaleDateString() : 'N/A'}
-                    </td>
-                    <td>
-                      {item.duration ? item.duration.toFixed(2) : 'N/A'} {/* Assuming duration is a number */}
-                    </td>
-                    <td>
-                      {item.lagging ? item.lagging.toFixed(2) : 'N/A'} {/* Assuming lagging is a number */}
-                    </td>
-                    <td>
-                      {item.actual ? item.actual.toFixed(2) : 'N/A'} {/* Assuming actual is a number */}
-                    </td>
-                    <td>
-                      {typeof item.lead_percentage_change === 'number' ? item.lead_percentage_change.toFixed(2) : 'N/A'}
-                    </td>
+          {isLoading && <p style={{ textAlign: 'center' }}>Loading data...</p>}
+
+          {items.length > 0 ? (
+            <div style={{ overflowX: 'auto' }}>
+              <table style={styles.table}>
+                <thead>
+                  <tr style={styles.headerRow}>
+                    <th style={styles.th}>Company</th>
+                    <th style={styles.th}>Ticker</th>
+                    <th style={styles.th}>Sector</th>
+                    <th style={styles.th}>Industry</th>
+                    <th style={styles.th}>Activation Status</th>
+                    <th style={styles.th}>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {items.map((item, index) => (
+                    <tr
+                      key={index}
+                      style={{
+                        ...((index % 2 === 0) ? styles.evenRow : styles.oddRow),
+                        opacity: item.activation_status === 'Inactive' ? 0.6 : 1,
+                      }}
+                    >
+
+                      <td style={styles.td}>{item.company || 'N/A'}</td>
+                      <td style={styles.td}>{item.ticker || 'N/A'}</td>
+                      <td style={styles.td}>{item.sector || 'N/A'}</td>
+                      <td style={styles.td}>{item.industry || 'N/A'}</td>
+                      <td
+                        style={{
+                          ...styles.td,
+                          color:
+                            item.activation_status === 'Active'
+                              ? '#2e7d32'
+                              : '#c62828',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {item.activation_status || 'N/A'}
+                      </td>
+                      <td style={styles.td}>
+                        <button
+                          style={{
+                            padding: '6px 12px',
+                            backgroundColor: item.activation_status === 'Active' ? '#d32f2f' : '#2e7d32',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => handleActionClick(item.rank)}
+                        >
+                          {item.activation_status === 'Active' ? 'Deactivate' : 'Activate'}
+                        </button>
+
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            !isLoading && (
+              <p style={{ textAlign: 'center', marginTop: '20px' }}>No data available.</p>
+            )
           )}
         </Col>
       </Row>
     </Container>
   );
+};
+
+const styles = {
+  table: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    backgroundColor: '#fff',
+  },
+  headerRow: {
+    backgroundColor: '#f2f2f2',
+    textAlign: 'left',
+  },
+  th: {
+    padding: '10px 14px',
+    fontWeight: '600',
+    fontSize: '15px',
+    borderBottom: '1px solid #ccc',
+  },
+  td: {
+    padding: '10px 14px',
+    fontSize: '14px',
+    borderBottom: '1px solid #e0e0e0',
+  },
+  evenRow: {
+    backgroundColor: '#fafafa',
+  },
+  oddRow: {
+    backgroundColor: '#fff',
+  },
 };
 
 export default App;

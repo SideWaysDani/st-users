@@ -7,7 +7,7 @@ const App = () => {
 
   const getItems = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/fortune_1000`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/leads_1`);
       const data = await response.json();
       if (data.length > 0) {
         setItems(data);
@@ -33,19 +33,19 @@ const App = () => {
     fetchData();
   }, []);
 
-  const handleActionClick = (rank) => {
-    const lead = items.find(item => item.rank === rank);
+  const handleActionClick = (id) => {
+    const lead = items.find(item => item.id === id);
     if (!lead) return;
 
-    const action = lead.activation_status === 'Active' ? 'deactivate' : 'activate';
-    const url = `${process.env.REACT_APP_API_URL}/${action}_lead/${rank}`;
+    const action = lead.valid === 'Yes' ? 'invalid' : lead.valid === 'No' ? 'valid': '';
+    const url = `${process.env.REACT_APP_API_URL}/${action}_lead/${id}`;
 
     fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ rank }),
+      body: JSON.stringify({ id }),
     })
       .then(response => response.json())
       .then(data => {
@@ -71,7 +71,7 @@ const App = () => {
               color: '#333',
             }}
           >
-            fortune_1000 Analysis
+            leads_1 and fortune_1000 Analysis
           </h2>
         </Col>
       </Row>
@@ -85,8 +85,9 @@ const App = () => {
               <table style={styles.table}>
                 <thead>
                   <tr style={styles.headerRow}>
+                    <th style={styles.th}>Lead Date</th>
+                    <th style={styles.th}>Stock Name</th>
                     <th style={styles.th}>Company</th>
-                    <th style={styles.th}>Ticker</th>
                     <th style={styles.th}>Sector</th>
                     <th style={styles.th}>Industry</th>
                     <th style={styles.th}>Activation Status</th>
@@ -103,35 +104,48 @@ const App = () => {
                       }}
                     >
 
+                      <td style={styles.td}>
+                        {item.lead_date
+                          ? new Date(item.lead_date).toISOString().split('T')[0].replace(/-/g, '/')
+                          : 'N/A'}
+                      </td>
+
+                      <td style={styles.td}>{item.stock_name || 'N/A'}</td>
                       <td style={styles.td}>{item.company || 'N/A'}</td>
-                      <td style={styles.td}>{item.ticker || 'N/A'}</td>
                       <td style={styles.td}>{item.sector || 'N/A'}</td>
                       <td style={styles.td}>{item.industry || 'N/A'}</td>
                       <td
                         style={{
                           ...styles.td,
                           color:
-                            item.activation_status === 'Active'
+                            item.valid === 'Yes'
                               ? '#2e7d32'
-                              : '#c62828',
+                              : item.valid === 'No'
+                                ? '#c62828'
+                                : '#757575', 
                           fontWeight: 500,
                         }}
                       >
-                        {item.activation_status || 'N/A'}
+                        {item.valid === 'Yes'
+                          ? 'Active'
+                          : item.valid === 'No'
+                            ? 'Inactive'
+                            : 'N/A'}
                       </td>
+
                       <td style={styles.td}>
                         <button
                           style={{
                             padding: '6px 12px',
-                            backgroundColor: item.activation_status === 'Active' ? '#d32f2f' : '#2e7d32',
+                            backgroundColor: item.valid === 'Yes' ? '#d32f2f' : '#2e7d32',
                             color: '#fff',
                             border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer',
                           }}
-                          onClick={() => handleActionClick(item.rank)}
+                          onClick={() => handleActionClick(item.id)}
                         >
-                          {item.activation_status === 'Active' ? 'Deactivate' : 'Activate'}
+                          {item.valid === 'Yes' ? 'Deactivate' : item.valid === 'No' ? 'Activate' : ''}
                         </button>
 
                       </td>

@@ -1,28 +1,28 @@
 interface MenuItemsProps {
     id: number;
-    novidade ?: any;
+    novidade?: any;
     label: string;
-    icon ?: string;
-    link ?: string;
-    badge?:string;
-    badgecolor?:string;
-    subItems ?: any;
-    isHeader ?: boolean
+    icon?: string;
+    link?: string;
+    badge?: string;
+    badgecolor?: string;
+    subItems?: any;
+    isHeader?: boolean
 }
 
 const menuItems: Array<MenuItemsProps> = [
     {
         id: 1,
         label: "Dashboards",
-        isHeader : true
+        isHeader: true
     },
     {
         id: 2,
         label: "Sales",
         icon: "monitor",
         link: "/sales",
-        badge:"5+",
-        badgecolor:"badge-soft-secondary"
+        badge: "5+",
+        badgecolor: "badge-soft-secondary"
     },
     {
         id: 139,
@@ -33,7 +33,7 @@ const menuItems: Array<MenuItemsProps> = [
     {
         id: 3,
         label: "Applications",
-        isHeader : true
+        isHeader: true
     },
     {
         id: 4,
@@ -46,8 +46,8 @@ const menuItems: Array<MenuItemsProps> = [
         label: "Chat",
         icon: "message-square",
         link: "/chat",
-        badge:"Hot",
-        badgecolor:"badge-soft-danger"
+        badge: "Hot",
+        badgecolor: "badge-soft-danger"
     },
     {
         id: 7,
@@ -145,7 +145,7 @@ const menuItems: Array<MenuItemsProps> = [
     {
         id: 21,
         label: "Pages",
-        isHeader : true
+        isHeader: true
     },
     {
         id: 22,
@@ -153,8 +153,8 @@ const menuItems: Array<MenuItemsProps> = [
         label: "Authentication",
         icon: "user",
         link: "/#",
-        badge:"9",
-        badgecolor:"bg-info",
+        badge: "9",
+        badgecolor: "bg-info",
         subItems: [
             {
                 id: 23,
@@ -482,7 +482,7 @@ const menuItems: Array<MenuItemsProps> = [
     {
         id: 72,
         label: "Components",
-        isHeader : true
+        isHeader: true
     },
     {
         id: 73,
@@ -976,7 +976,7 @@ const menuItems: Array<MenuItemsProps> = [
                 label: "Strength Line Graph",
                 link: "/data-vizualization-4",
                 parentId: 144
-            },  
+            },
             {
                 id: 150,
                 label: "Committed Strength Line Graph",
@@ -989,7 +989,7 @@ const menuItems: Array<MenuItemsProps> = [
                 link: "/data-vizualization-5",
                 parentId: 144
             },
-                        {
+            {
                 id: 154,
                 label: "Leads Utilization Graph",
                 link: "/leadsutlization",
@@ -1018,12 +1018,19 @@ const menuItems: Array<MenuItemsProps> = [
         "icon": "user-plus",
         "link": "/user-onboarding",
     },
-        {
+    {
         "id": 154,
         "novidade": false,
         "label": "Leads Status",
         "icon": "edit-3",
         "link": "/leadanalysis",
+    },
+        {
+        "id": 155,
+        "novidade": false,
+        "label": "Leads_1 Status",
+        "icon": "edit-3",
+        "link": "/leads_1",
     },
 ];
 

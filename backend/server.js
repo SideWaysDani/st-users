@@ -29,6 +29,7 @@ const main6 = require('../st-user/src/components/LeadsUtilizationGraph/Controlle
 const leadsmain = require('../st-user/src/components/LeadsPhasesDashboard/Controllers/leadsmain')
 const addUser = require('../st-user/src/components/AddUser/Controllers/addUser');
 const main7 = require('../st-user/src/components/LeadsAnalysis/main7');
+const main8 = require('../st-user/src/components/leads_1Analysis/main8');
 // App
 const app = express();
 
@@ -91,6 +92,10 @@ app.post('/addUser', (req, res) => addUser.insertNewUser(req, res, db));
 app.get('/fortune_1000', (req, res) => main7.getTableData(req, res, db));
 app.put('/deactivate_lead/:rank', (req, res) => main7.deactivateLead(req, res, db));
 app.put('/activate_lead/:rank', (req, res) => main7.activateLead(req, res, db));
+
+app.get('/leads_1', (req, res) => main8.getTableData(req, res, db));
+app.put('/invalid_lead/:id', (req, res) => main8.deactivateLead(req, res, db));
+app.put('/valid_lead/:id', (req, res) => main8.activateLead(req, res, db));
 
 // Live Trading - live_trading_multi_8
 app.get('/api/dataa', async (req, res) => {

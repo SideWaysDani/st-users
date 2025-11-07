@@ -139,6 +139,7 @@ import TechRadar from "src/pages/AllCharts/TechRadar/techRadar";
 import DynamicTechRadar from "src/pages/AllCharts/DynamicTechRadar/DynamicTechRadar";
 import UsersApp from "src/pages/AllCharts/User2/users";
 import LeadsAnalysis from "src/pages/AllCharts/leadAnalysis/leadAnalysis";
+import Leads_1Analysis from "src/components/leads_1Analysis/App";
 import DataVisualization from "src/pages/AllCharts/datavisualization/datavisualization";
 import TechRadarDv from "src/pages/AllCharts/TechRadarDV/techRadarDv";
 import CplLineGraph from "src/pages/AllCharts/cplLineGraph/cplLineGraph";
@@ -183,6 +184,7 @@ const userRoutes: Array<RouteProps> = [
   //dashboard
   { path: "/usersapp", component: <UsersApp/> },
   { path: "/leadanalysis", component: <LeadsAnalysis/> },
+  { path: "/leads_1", component: <Leads_1Analysis/> },
   { path: "/sales", component: <Sales /> },
   { path: "/dashboards-analytics", component: <Analytics /> },
   { path: "/calendar", component: <Calendar /> },

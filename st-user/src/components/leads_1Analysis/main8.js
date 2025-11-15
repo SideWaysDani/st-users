@@ -10,15 +10,22 @@ FROM (
     f.industry,
     l.lead_date,
     l.stock_name,
-    l.valid, 
-    l.id
+    l.valid,
+    l.id,
+    lm.prediction  -- NEW COLUMN
   FROM stocktrader.fortune_1000 f
   JOIN stocktrader.leads_1 l 
-    ON f.ticker = l.stock_name
+      ON f.ticker = l.stock_name
+
+  LEFT JOIN public.leads_1_ml lm 
+      ON lm.lead_id = l.id
+     AND lm.model = 'StackedEnsemble'
+     AND lm.feature_selection_method IN ('SHAP')
+     AND lm.iteration = 3
+
   ORDER BY f.ticker, l.lead_date DESC
 ) AS distinct_leads
 ORDER BY lead_date DESC;
-
   `)
     .then(items => {
       if (items.rows && items.rows.length) {

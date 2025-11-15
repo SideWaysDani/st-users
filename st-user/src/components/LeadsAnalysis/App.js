@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 const App = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState("");
 
   const getItems = async () => {
     try {
@@ -57,7 +58,13 @@ const App = () => {
       });
   };
 
-
+  // SEARCH FILTER
+  const filteredItems = items.filter(item =>
+    item.company?.toLowerCase().includes(search.toLowerCase()) ||
+    item.ticker?.toLowerCase().includes(search.toLowerCase()) ||
+    item.sector?.toLowerCase().includes(search.toLowerCase()) ||
+    item.industry?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <Container className="App" style={{ marginTop: '100px', marginBottom: '80px' }}>
@@ -76,11 +83,48 @@ const App = () => {
         </Col>
       </Row>
 
+      {/* SEARCH BAR */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "20px",
+        }}
+      >
+        <div style={{ position: "relative" }}>
+          <i
+            className="uil uil-search-alt"
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "#777",
+              fontSize: "18px",
+            }}
+          ></i>
+
+          <input
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{
+              padding: "8px 12px 8px 38px",
+              width: "260px",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              fontSize: "14px",
+            }}
+          />
+        </div>
+      </div>
+
       <Row>
         <Col>
           {isLoading && <p style={{ textAlign: 'center' }}>Loading data...</p>}
 
-          {items.length > 0 ? (
+          {filteredItems.length > 0 ? (
             <div style={{ overflowX: 'auto' }}>
               <table style={styles.table}>
                 <thead>
@@ -94,7 +138,7 @@ const App = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {items.map((item, index) => (
+                  {filteredItems.map((item, index) => (
                     <tr
                       key={index}
                       style={{
@@ -102,11 +146,11 @@ const App = () => {
                         opacity: item.activation_status === 'Inactive' ? 0.6 : 1,
                       }}
                     >
-
                       <td style={styles.td}>{item.company || 'N/A'}</td>
                       <td style={styles.td}>{item.ticker || 'N/A'}</td>
                       <td style={styles.td}>{item.sector || 'N/A'}</td>
                       <td style={styles.td}>{item.industry || 'N/A'}</td>
+
                       <td
                         style={{
                           ...styles.td,
@@ -119,6 +163,7 @@ const App = () => {
                       >
                         {item.activation_status || 'N/A'}
                       </td>
+
                       <td style={styles.td}>
                         <button
                           style={{
@@ -133,8 +178,8 @@ const App = () => {
                         >
                           {item.activation_status === 'Active' ? 'Deactivate' : 'Activate'}
                         </button>
-
                       </td>
+
                     </tr>
                   ))}
                 </tbody>
@@ -142,7 +187,7 @@ const App = () => {
             </div>
           ) : (
             !isLoading && (
-              <p style={{ textAlign: 'center', marginTop: '20px' }}>No data available.</p>
+              <p style={{ textAlign: 'center', marginTop: '20px' }}>No matching results.</p>
             )
           )}
         </Col>

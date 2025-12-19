@@ -13,6 +13,7 @@ const App = () => {
       const data = await response.json();
       if (data.length > 0) {
         setItems(data);
+        // console.log('Data fetched successfully:', data);
       } else {
         console.warn('No data received from server');
       }
@@ -133,7 +134,8 @@ const App = () => {
                     <th style={styles.th}>Company</th>
                     <th style={styles.th}>Sector</th>
                     <th style={styles.th}>Industry</th>
-                    <th style={styles.th}>Prediction</th>
+                    <th style={styles.th}>Prediction - Iter 3</th>
+                    <th style={styles.th}>Prediction - Iter 6</th>
                     <th style={styles.th}>Activation Status</th>
                     <th style={styles.th}>Action</th>
                   </tr>
@@ -185,6 +187,25 @@ const App = () => {
                           {item.prediction === 1
                             ? "1"
                             : item.prediction === 0
+                              ? "0"
+                              : "N/A"}
+                        </td>
+
+                        <td
+                          style={{
+                            ...styles.td,
+                            color:
+                              item.prediction_iter_6 === 1
+                                ? '#2e7d32'
+                                : item.prediction_iter_6 === 0
+                                  ? '#c62828'
+                                  : '#757575',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item.prediction_iter_6 === 1
+                            ? "1"
+                            : item.prediction_iter_6 === 0
                               ? "0"
                               : "N/A"}
                         </td>

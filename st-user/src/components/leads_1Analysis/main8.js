@@ -12,24 +12,36 @@ FROM (
     l.stock_name,
     l.valid,
     l.id,
-    lm.prediction  -- NEW COLUMN
+
+    lm3.prediction AS prediction,
+
+    lm6.prediction AS prediction_iter_6
+
   FROM stocktrader.fortune_1000 f
   JOIN stocktrader.leads_1 l 
       ON f.ticker = l.stock_name
 
-  LEFT JOIN public.leads_1_ml lm 
-      ON lm.lead_id = l.id
-     AND lm.model = 'StackedEnsemble'
-     AND lm.feature_selection_method IN ('SHAP')
-     AND lm.iteration = 3
+  LEFT JOIN public.leads_1_ml lm3
+      ON lm3.lead_id = l.id
+     AND lm3.model = 'StackedEnsemble'
+     AND lm3.feature_selection_method IN ('SHAP')
+     AND lm3.iteration = 3
+
+  LEFT JOIN public.leads_1_ml lm6
+      ON lm6.lead_id = l.id
+     AND lm6.model = 'StackedEnsemble'
+     AND lm6.feature_selection_method IN ('Boruta')
+     AND lm6.iteration = 6
 
   ORDER BY f.ticker, l.lead_date DESC
 ) AS distinct_leads
 ORDER BY lead_date DESC;
+
   `)
     .then(items => {
       if (items.rows && items.rows.length) {
         res.json(items.rows);
+        // console.log('Data fetched successfully:', items.rows);
       } else {
         res.json({ dataExists: false });
       }

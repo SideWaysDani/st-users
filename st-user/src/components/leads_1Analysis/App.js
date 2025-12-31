@@ -136,6 +136,7 @@ const App = () => {
                     <th style={styles.th}>Industry</th>
                     <th style={styles.th}>Prediction - Iter 3</th>
                     <th style={styles.th}>Prediction - Iter 6</th>
+                    <th style={styles.th}>Prediction - Iter 7</th>
                     <th style={styles.th}>Activation Status</th>
                     <th style={styles.th}>Action</th>
                   </tr>
@@ -176,17 +177,17 @@ const App = () => {
                           style={{
                             ...styles.td,
                             color:
-                              item.prediction === 1
+                              item.prediction_iter_3 === 1
                                 ? '#2e7d32'
-                                : item.prediction === 0
+                                : item.prediction_iter_3 === 0
                                   ? '#c62828'
                                   : '#757575',
                             fontWeight: 600,
                           }}
                         >
-                          {item.prediction === 1
+                          {item.prediction_iter_3 === 1
                             ? "1"
-                            : item.prediction === 0
+                            : item.prediction_iter_3 === 0
                               ? "0"
                               : "N/A"}
                         </td>
@@ -206,6 +207,25 @@ const App = () => {
                           {item.prediction_iter_6 === 1
                             ? "1"
                             : item.prediction_iter_6 === 0
+                              ? "0"
+                              : "N/A"}
+                        </td>
+
+                        <td
+                          style={{
+                            ...styles.td,
+                            color:
+                              item.prediction_iter_7 === 1
+                                ? '#2e7d32'
+                                : item.prediction_iter_7 === 0
+                                  ? '#c62828'
+                                  : '#757575',
+                            fontWeight: 600,
+                          }}
+                        >
+                          {item.prediction_iter_7 === 1
+                            ? "1"
+                            : item.prediction_iter_7 === 0
                               ? "0"
                               : "N/A"}
                         </td>

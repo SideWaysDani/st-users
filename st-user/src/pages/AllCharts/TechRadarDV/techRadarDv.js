@@ -12,7 +12,7 @@ function App() {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const [setup2, setSetup2] = useState({
-        rrings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
+        rings: ['-50,0', '0-10', '10-20', '20-30', '30-40', 'above 40'],
         quadrants: [],
         data: []
     });
@@ -206,16 +206,16 @@ function App() {
             setSelectedDate2(battleDates2[0]);
             interval = setInterval(() => {
                 setSelectedDate2(prevDate => {
-                    const currentIndex = battleDates2.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates2.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates2.length) { // Corrected line
+                    if (nextIndex >= battleDates2.length) {  
                         setIsPlaying2(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates2[nextIndex]; // Corrected line
+                    return battleDates2[nextIndex];  
                 });
             }, 5000);
         }
@@ -300,16 +300,16 @@ function App() {
             setSelectedDate3(battleDates3[0]);
             interval = setInterval(() => {
                 setSelectedDate3(prevDate => {
-                    const currentIndex = battleDates3.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates3.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates3.length) { // Corrected line
+                    if (nextIndex >= battleDates3.length) {  
                         setIsPlaying3(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates3[nextIndex]; // Corrected line
+                    return battleDates3[nextIndex];  
                 });
             }, 5000);
         }
@@ -382,16 +382,16 @@ function App() {
             setSelectedDate4(battleDates4[0]);
             interval = setInterval(() => {
                 setSelectedDate4(prevDate => {
-                    const currentIndex = battleDates4.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates4.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates4.length) { // Corrected line
+                    if (nextIndex >= battleDates4.length) {  
                         setIsPlaying4(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates4[nextIndex]; // Corrected line
+                    return battleDates4[nextIndex];  
                 });
             }, 5000);
         }
@@ -464,16 +464,16 @@ function App() {
             setSelectedDate5(battleDates5[0]);
             interval = setInterval(() => {
                 setSelectedDate5(prevDate => {
-                    const currentIndex = battleDates5.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates5.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates5.length) { // Corrected line
+                    if (nextIndex >= battleDates5.length) {  
                         setIsPlaying5(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates5[nextIndex]; // Corrected line
+                    return battleDates5[nextIndex];  
                 });
             }, 5000);
         }
@@ -546,16 +546,16 @@ function App() {
             setSelectedDate6(battleDates6[0]);
             interval = setInterval(() => {
                 setSelectedDate6(prevDate => {
-                    const currentIndex = battleDates6.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates6.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates6.length) { // Corrected line
+                    if (nextIndex >= battleDates6.length) {  
                         setIsPlaying6(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates6[nextIndex]; // Corrected line
+                    return battleDates6[nextIndex];  
                 });
             }, 5000);
         }
@@ -628,16 +628,16 @@ function App() {
             setSelectedDate7(battleDates7[0]);
             interval = setInterval(() => {
                 setSelectedDate7(prevDate => {
-                    const currentIndex = battleDates7.indexOf(prevDate); // Corrected line
+                    const currentIndex = battleDates7.indexOf(prevDate);  
                     const nextIndex = currentIndex + 1;
 
-                    if (nextIndex >= battleDates7.length) { // Corrected line
+                    if (nextIndex >= battleDates7.length) {  
                         setIsPlaying7(false);
                         clearInterval(interval);
                         return prevDate;
                     }
 
-                    return battleDates7[nextIndex]; // Corrected line
+                    return battleDates7[nextIndex];  
                 });
             }, 5000);
         }

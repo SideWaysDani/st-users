@@ -121,11 +121,11 @@ app.get('/api/dataa', async (req, res) => {
           LEFT JOIN
               live_trading_multi_8.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml_prod l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
       `;
 
         const data = await db.raw(query);
@@ -147,12 +147,12 @@ app.get('/api/dataa', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/dataa:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
@@ -161,7 +161,7 @@ app.get('/api/dataa', async (req, res) => {
 app.get('/api/data', async (req, res) => {
     try {
         const query = `
-          SELECT
+    SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -181,11 +181,12 @@ app.get('/api/data', async (req, res) => {
           LEFT JOIN
               war_iter_4.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
+
       `;
 
         const data = await db.raw(query);
@@ -207,20 +208,20 @@ app.get('/api/data', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
-// iteration 4 - war_iter_4_2
+// iteration 4.2 - war_iter_4_2
 app.get('/api/data4.2', async (req, res) => {
     try {
         const query = `
-            SELECT
+          SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -240,11 +241,12 @@ app.get('/api/data4.2', async (req, res) => {
           LEFT JOIN
               war_iter_4_2.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
+
         `;
 
         const data = await db.raw(query);
@@ -266,12 +268,12 @@ app.get('/api/data4.2', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data4.2:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
@@ -281,7 +283,7 @@ app.get('/api/data4.2', async (req, res) => {
 app.get('/api/data4.3', async (req, res) => {
     try {
         const query = `
-            SELECT
+        SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -301,11 +303,12 @@ app.get('/api/data4.3', async (req, res) => {
           LEFT JOIN
               war_iter_4_3.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
+
         `;
 
         const data = await db.raw(query);
@@ -327,12 +330,12 @@ app.get('/api/data4.3', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data4.3:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
@@ -342,7 +345,7 @@ app.get('/api/data4.3', async (req, res) => {
 app.get('/api/data4.4', async (req, res) => {
     try {
         const query = `
-            SELECT
+           SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -362,11 +365,12 @@ app.get('/api/data4.4', async (req, res) => {
           LEFT JOIN
               war_iter_4_4.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
+
         `;
 
         const data = await db.raw(query);
@@ -388,12 +392,12 @@ app.get('/api/data4.4', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data4.4:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
@@ -403,7 +407,7 @@ app.get('/api/data4.4', async (req, res) => {
 app.get('/api/data5', async (req, res) => {
     try {
         const query = `
-            SELECT
+        SELECT
               p.performance_id,
               p.unit_assignment_id,
               p.profit_and_loss,
@@ -423,11 +427,12 @@ app.get('/api/data5', async (req, res) => {
           LEFT JOIN
               war_iter_5.allocation a ON d.deployment_id = a.deployment_id
           LEFT JOIN
-              stocktrader.leads l on p.lead_id = l.id
+              stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000_india f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker       
           order by
-          	  p.battle_date asc
+              p.battle_date asc
+
         `;
 
         const data = await db.raw(query);
@@ -449,12 +454,12 @@ app.get('/api/data5', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data5:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
@@ -486,9 +491,9 @@ app.get('/api/data6', async (req, res) => {
           LEFT JOIN
               stocktrader.leads_gold_ml l on p.lead_id = l.id
           LEFT JOIN
-              stocktrader.fortune_1000 f ON l.stock_name = f.ticker		
+              stocktrader.fortune_1000 f ON l.stock_name = f.ticker     
           order by
-          	  p.battle_date asc
+              p.battle_date asc
         `;
 
         const data = await db.raw(query);
@@ -510,12 +515,12 @@ app.get('/api/data6', async (req, res) => {
             color: row.profit_and_loss >= 0 ? 'green' : 'red'
         }));
 
-        console.log('Formatted Data:', formattedData);
+        // console.log('Formatted Data:', formattedData);
 
         res.json(formattedData);
     } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error fetching data from /api/data6:', error.message, error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
 
